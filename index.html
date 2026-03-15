@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Русский — Verbes</title>
+<meta name="theme-color" content="#0a0a0f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Verbes RU">
+<style>
+:root{
+  --bg:#0a0a0f;--bg2:#111118;--bg3:#1a1a24;--bg4:#22222e;
+  --text:#e8e8f0;--text-muted:#7a7a9a;--text-dim:#4a4a6a;
+  --gold:#c9a84c;--gold-light:#e8c870;--gold-dim:#7a6030;
+  --green:#4caf7a;--red:#e05555;--blue:#5588e0;--purple:#9966cc;
+  --imp-col:#5588e0;--pf-col:#cc7744;--biasp-col:#66aa88;
+  --radius:12px;--radius-sm:8px;--font-mono:'Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;min-height:100vh;max-width:500px;margin:0 auto;padding-bottom:30px;}
+.header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px;border-bottom:1px solid var(--bg4);}
+.header-title{font-family:var(--font-mono);font-size:11px;letter-spacing:3px;color:var(--text-muted);}
+.score-badge{background:var(--bg3);border:1px solid var(--bg4);border-radius:20px;padding:5px 12px;font-family:var(--font-mono);font-size:12px;display:flex;gap:8px;}
+.sc-r{color:var(--green);}.sc-w{color:var(--red);}
+.tabs{display:flex;padding:10px 12px 0;gap:6px;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{flex-shrink:0;padding:8px 14px;border-radius:20px;border:1px solid var(--bg4);background:transparent;color:var(--text-muted);font-family:var(--font-mono);font-size:10px;letter-spacing:1px;cursor:pointer;transition:all .2s;}
+.tab.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-light);}
+.tab-content{display:none;padding:14px 14px 20px;}
+.tab-content.active{display:block;}
+.home-hero{text-align:center;padding:20px 10px 14px;}
+.home-title{font-size:38px;color:var(--gold-light);letter-spacing:-1px;margin-bottom:4px;}
+.home-sub{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:3px;}
+.section-label{font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:var(--text-dim);margin-bottom:8px;margin-top:16px;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;}
+.chip{padding:6px 13px;border-radius:20px;border:1px solid var(--bg4);background:var(--bg3);color:var(--text-muted);font-family:var(--font-mono);font-size:10px;cursor:pointer;transition:all .2s;user-select:none;}
+.chip.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-light);}
+.slider-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+.slider-row span{font-family:var(--font-mono);font-size:12px;color:var(--gold-light);min-width:28px;text-align:right;}
+input[type=range]{flex:1;height:4px;-webkit-appearance:none;background:var(--bg4);border-radius:2px;outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--gold);border-radius:50%;cursor:pointer;}
+.btn-primary{width:100%;padding:16px;background:var(--gold);color:#0a0a0f;font-family:var(--font-mono);font-size:13px;letter-spacing:2px;font-weight:700;border:none;border-radius:var(--radius);cursor:pointer;margin-top:12px;transition:opacity .15s;}
+.btn-primary:active{opacity:.8;}
+.btn-secondary{width:100%;padding:12px;background:transparent;color:var(--text-muted);font-family:var(--font-mono);font-size:11px;letter-spacing:1px;border:1px solid var(--bg4);border-radius:var(--radius);cursor:pointer;margin-top:8px;transition:all .2s;}
+.btn-secondary:active{background:var(--bg3);}
+.btn-danger{width:100%;padding:10px;background:transparent;color:var(--red);font-family:var(--font-mono);font-size:10px;letter-spacing:1px;border:1px solid #441111;border-radius:var(--radius);cursor:pointer;margin-top:8px;}
+.ex-screen{padding:12px 14px;}
+.progress-bar{height:2px;background:var(--bg4);border-radius:1px;margin-bottom:12px;}
+.progress-fill{height:100%;background:var(--gold);border-radius:1px;transition:width .3s;}
+.ex-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.ex-type-badge{font-family:var(--font-mono);font-size:9px;letter-spacing:2px;padding:4px 10px;border-radius:12px;border:1px solid var(--bg4);color:var(--text-muted);background:var(--bg3);}
+.ex-type-badge.version{border-color:#334466;color:var(--imp-col);background:#111828;}
+.ex-type-badge.theme{border-color:#443322;color:var(--pf-col);background:#1a1208;}
+.ex-type-badge.ident{border-color:#332244;color:var(--purple);background:#160e22;}
+.ex-type-badge.paires{border-color:#1a3322;color:var(--green);background:#0a1810;}
+.hard-badge{font-family:var(--font-mono);font-size:9px;color:var(--red);letter-spacing:1px;}
+.chrono-wrap{margin-bottom:10px;}
+.chrono-bar-bg{height:3px;background:var(--bg4);border-radius:2px;}
+.chrono-bar{height:100%;border-radius:2px;transition:width 1s linear;}
+.chrono-num{font-family:var(--font-mono);font-size:10px;text-align:right;margin-top:2px;}
+.q-card{background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius);padding:18px;margin-bottom:12px;}
+.verb-ru{font-size:30px;font-weight:bold;color:var(--gold-light);margin:6px 0 3px;}
+.verb-fr{font-size:15px;color:var(--text-muted);font-style:italic;margin-bottom:8px;}
+.asp-badge{display:inline-block;font-family:var(--font-mono);font-size:9px;padding:3px 8px;border-radius:10px;margin-right:5px;margin-bottom:8px;}
+.asp-imp{background:#1a2540;border:1px solid var(--imp-col);color:var(--imp-col);}
+.asp-pf{background:#2a1a0a;border:1px solid var(--pf-col);color:var(--pf-col);}
+.asp-biasp{background:#0a2018;border:1px solid var(--green);color:var(--green);}
+.q-label{font-size:15px;color:var(--text);margin-top:10px;line-height:1.65;font-weight:500;}
+.q-label strong{color:var(--gold-light);}
+.q-sub{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin-top:6px;}
+.person-tag{display:inline-block;font-family:var(--font-mono);font-size:12px;padding:5px 12px;border-radius:10px;background:var(--bg3);color:var(--gold);border:1px solid var(--gold-dim);margin-top:8px;margin-right:5px;}
+.options{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.opt-btn{display:flex;align-items:center;gap:10px;padding:13px 14px;background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;text-align:left;width:100%;color:var(--text);font-size:14px;font-family:'Georgia',serif;}
+.opt-btn:active{background:var(--bg3);}
+.opt-letter{font-family:var(--font-mono);font-size:10px;color:var(--text-dim);min-width:18px;}
+.opt-btn.correct{background:#0d2a1a;border-color:var(--green);color:var(--green);}
+.opt-btn.wrong{background:#2a0d0d;border-color:var(--red);color:var(--red);}
+.opt-btn.reveal{background:#1a2010;border-color:var(--gold);color:var(--gold-light);}
+.opt-btn:disabled{cursor:default;}
+.input-zone{margin-bottom:10px;}
+.text-input{width:100%;padding:14px;background:var(--bg2);border:1.5px solid var(--bg4);border-radius:var(--radius-sm);color:var(--text);font-size:16px;font-family:'Georgia',serif;outline:none;transition:border-color .2s;}
+.text-input:focus{border-color:var(--gold);}
+.text-input.correct{border-color:var(--green);background:#0d1a12;}
+.text-input.wrong{border-color:var(--red);background:#1a0d0d;}
+.feedback{border-radius:var(--radius);padding:14px;margin-bottom:10px;border:1px solid var(--bg4);}
+.feedback.correct-fb{background:#0a1e12;border-color:#1a4a28;}
+.feedback.wrong-fb{background:#1a0a0a;border-color:#4a1a1a;}
+.fb-title{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;margin-bottom:8px;}
+.fb-title.ok{color:var(--green);}.fb-title.ko{color:var(--red);}
+.fb-body{font-size:13px;color:var(--text-muted);margin-bottom:4px;line-height:1.5;}
+.fb-body strong{color:var(--text);}
+.fb-note{font-size:11px;color:var(--text-dim);font-style:italic;margin-top:6px;line-height:1.4;}
+.conj-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;}
+.conj-table th{font-family:var(--font-mono);font-size:9px;letter-spacing:1px;color:var(--text-dim);text-align:left;padding:4px 6px;border-bottom:1px solid var(--bg4);}
+.conj-table td{padding:5px 6px;color:var(--text-muted);border-bottom:1px solid #1a1a22;}
+.conj-table td:first-child{color:var(--text-dim);font-family:var(--font-mono);font-size:10px;}
+.conj-table tr.hl td{color:var(--gold-light);background:#1a1500;}
+.streak-bar{display:flex;gap:4px;margin-bottom:10px;}
+.s-dot{width:8px;height:8px;border-radius:50%;background:var(--bg4);}
+.s-dot.ok{background:var(--green);}.s-dot.ko{background:var(--red);}
+.cb-options{display:flex;flex-direction:column;gap:7px;margin-bottom:12px;}
+.cb-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius-sm);cursor:pointer;}
+.cb-opt.selected{border-color:var(--gold);background:#1a1400;}
+.cb-opt.correct{border-color:var(--green);background:#0d1a12;}
+.cb-opt.wrong{border-color:var(--red);background:#1a0d0d;}
+.cb-opt.missed{border-color:var(--gold);background:#1a1000;}
+.cb-box{width:18px;height:18px;border:1.5px solid var(--bg4);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;}
+.cb-opt.selected .cb-box{border-color:var(--gold);color:var(--gold);}
+.cb-opt.correct .cb-box{border-color:var(--green);color:var(--green);}
+.cb-opt.wrong .cb-box{border-color:var(--red);color:var(--red);}
+.cb-opt.missed .cb-box{border-color:var(--gold);color:var(--gold);}
+.result-screen{padding:30px 20px;text-align:center;}
+.result-pct{font-size:72px;font-weight:bold;color:var(--gold-light);line-height:1;}
+.result-label{font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:var(--text-dim);margin-top:4px;margin-bottom:20px;}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.stat-box{background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius-sm);padding:14px;}
+.stat-num{font-size:28px;font-weight:bold;}
+.stat-num.ok{color:var(--green);}.stat-num.ko{color:var(--red);}
+.stat-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:1px;color:var(--text-dim);margin-top:4px;}
+.stats-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.stats-lbl{font-family:var(--font-mono);font-size:9px;color:var(--text-muted);min-width:80px;}
+.stats-bar-wrap{flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+.stats-bar-fill{height:100%;border-radius:3px;transition:width .5s;}
+.stats-pct{font-family:var(--font-mono);font-size:9px;color:var(--text-dim);min-width:32px;text-align:right;}
+.error-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bg4);}
+.error-verb{font-size:16px;color:var(--text);}
+.error-meta{font-family:var(--font-mono);font-size:10px;color:var(--text-dim);margin-top:2px;}
+.error-count{font-family:var(--font-mono);font-size:11px;color:var(--red);}
+.err-badge{background:#441111;color:var(--red);border-radius:50%;width:18px;height:18px;display:none;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;margin-left:4px;}
+.rule-box{background:var(--bg2);border:1px solid var(--bg4);border-radius:var(--radius-sm);padding:12px;margin-bottom:10px;}
+.rule-title{font-family:var(--font-mono);font-size:10px;letter-spacing:1px;color:var(--gold);margin-bottom:8px;}
+.rule-body{font-size:12px;color:var(--text-muted);line-height:1.7;}
+.rule-body em{color:var(--text);font-style:normal;}
+.rule-body .ru{color:var(--gold-light);}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#0d2a1a;border:1px solid var(--green);color:var(--green);font-family:var(--font-mono);font-size:10px;letter-spacing:1px;padding:10px 18px;border-radius:20px;z-index:100;opacity:0;transition:opacity .3s;white-space:nowrap;}
+.toast.show{opacity:1;}
+.hidden{display:none!important;}
+.empty-state{text-align:center;color:var(--text-dim);font-size:13px;padding:30px 20px;line-height:1.8;}
+.pair-display{background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--radius-sm);padding:12px;margin-top:8px;font-size:13px;color:var(--text-muted);line-height:1.6;}
+.pair-display .ru{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div id="homeScreen">
+  <div class="header">
+    <div class="header-title">РУССКИЙ · VERBES</div>
+    <div class="score-badge"><span class="sc-r">✓ <span id="scoreRight">0</span></span><span>·</span><span class="sc-w">✗ <span id="scoreWrong">0</span></span></div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('tabPrat',this)">PRATIQUER</div>
+    <div class="tab" onclick="switchTab('tabErr',this)">ERREURS <span class="err-badge" id="errBadge"></span></div>
+    <div class="tab" onclick="switchTab('tabStat',this)">STATS</div>
+    <div class="tab" onclick="switchTab('tabReg',this)">RÈGLES</div>
+    <div class="tab" onclick="switchTab('tabInst',this)">📱</div>
+  </div>
+
+  <div id="tabPrat" class="tab-content active">
+    <div class="home-hero">
+      <div class="home-title">Глаголы</div>
+      <div class="home-sub">165 VERBES · TOUS TEMPS · ASPECT</div>
+    </div>
+    <div class="section-label">NOMBRE DE QUESTIONS</div>
+    <div class="slider-row">
+      <input type="range" id="numQ" min="5" max="30" value="10" oninput="document.getElementById('numQV').textContent=this.value">
+      <span id="numQV">10</span>
+    </div>
+    <div class="section-label">MODE</div>
+    <div class="chips">
+      <div class="chip" id="chipSRS" onclick="toggleMode('srs',this)">🧠 Répétition espacée</div>
+      <div class="chip" id="chipChrono" onclick="toggleMode('chrono',this)">⏱ Chrono</div>
+    </div>
+    <div class="section-label">TYPE D'EXERCICE</div>
+    <div class="chips">
+      <div class="chip active" data-f="ex" data-v="qcm_ver" onclick="toggleFilter(this)">QCM ru→fr</div>
+      <div class="chip active" data-f="ex" data-v="qcm_th" onclick="toggleFilter(this)">QCM fr→ru</div>
+      <div class="chip active" data-f="ex" data-v="compl" onclick="toggleFilter(this)">Complétion</div>
+      <div class="chip active" data-f="ex" data-v="ident" onclick="toggleFilter(this)">Identifier</div>
+      <div class="chip active" data-f="ex" data-v="phrase" onclick="toggleFilter(this)">Phrase</div>
+    </div>
+    <div class="section-label">TEMPS</div>
+    <div class="chips">
+      <div class="chip active" data-f="temps" data-v="pres" onclick="toggleFilter(this)">Présent</div>
+      <div class="chip active" data-f="temps" data-v="past" onclick="toggleFilter(this)">Passé</div>
+      <div class="chip active" data-f="temps" data-v="fut" onclick="toggleFilter(this)">Futur</div>
+      <div class="chip active" data-f="temps" data-v="imp" onclick="toggleFilter(this)">Impératif</div>
+    </div>
+    <div class="section-label">ASPECT</div>
+    <div class="chips">
+      <div class="chip active" data-f="asp" data-v="imp" onclick="toggleFilter(this)">Imperfectif</div>
+      <div class="chip active" data-f="asp" data-v="pf" onclick="toggleFilter(this)">Perfectif</div>
+      <div class="chip active" data-f="asp" data-v="biasp" onclick="toggleFilter(this)">Biaspectuel</div>
+    </div>
+    <button class="btn-primary" onclick="startSession(false)">COMMENCER →</button>
+    <button class="btn-secondary" onclick="startSession(false,'paires')">🔀 PAIRES ASPECTUELLES →</button>
+  </div>
+
+  <div id="tabErr" class="tab-content">
+    <div id="errContent"><div class="empty-state">🎉 Aucune erreur !<br>Continue à t'entraîner.</div></div>
+  </div>
+
+  <div id="tabStat" class="tab-content">
+    <div id="statContent"><div class="empty-state">Lance une session<br>pour voir tes stats.</div></div>
+  </div>
+
+  <div id="tabReg" class="tab-content">
+    <div class="rule-box"><div class="rule-title">ASPECT : IMP. VS PF.</div><div class="rule-body">L'<em>imperfectif</em> = action en cours, répétée, habituelle.<br>Le <em>perfectif</em> = action accomplie, ponctuelle, avec résultat.<br><br><span class="ru">Я читал книгу</span> — j'étais en train de lire<br><span class="ru">Я прочитал книгу</span> — j'ai fini de lire le livre</div></div>
+    <div class="rule-box"><div class="rule-title">PRÉSENT TYPE 1 (-ать/-еть)</div><div class="rule-body"><span class="ru">я -ю / ты -ешь / он -ет / мы -ем / вы -ете / они -ют</span><br><br>Ex: <span class="ru">читать → читаю, читаешь, читает...</span></div></div>
+    <div class="rule-box"><div class="rule-title">PRÉSENT TYPE 2 (-ить/-еть)</div><div class="rule-body"><span class="ru">я -ю(-у) / ты -ишь / он -ит / мы -им / вы -ите / они -ят(-ат)</span><br><br>Ex: <span class="ru">говорить → говорю, говоришь, говорит...</span></div></div>
+    <div class="rule-box"><div class="rule-title">PASSÉ</div><div class="rule-body">Infinitif sans <span class="ru">-ть</span> + genre : <span class="ru">-л / -ла / -ло / -ли</span><br>Ex: <span class="ru">читать → читал, читала, читало, читали</span></div></div>
+    <div class="rule-box"><div class="rule-title">IMPÉRATIF</div><div class="rule-body">Base présent (3pl. - ют/ат) :<br>→ voyelle finale : <span class="ru">+ й / йте</span><br>→ consonne (accent sur rad.) : <span class="ru">+ и / ите</span><br>→ consonne (accent avant) : <span class="ru">+ ь / ьте</span></div></div>
+    <div class="rule-box"><div class="rule-title">ALTERNANCES CONSONANTIQUES (1ère pers.)</div><div class="rule-body"><span class="ru">б→бл</span> · <span class="ru">в→вл</span> · <span class="ru">д→ж</span> · <span class="ru">з→ж</span> · <span class="ru">с→ш</span> · <span class="ru">т→ч</span> · <span class="ru">ск→щ</span></div></div>
+    <div class="rule-box"><div class="rule-title">VERBES DE MOUVEMENT</div><div class="rule-body"><em>Déterminé</em> (une direction, maintenant) vs <em>indéterminé</em> (habituel)<br><span class="ru">идти</span> / <span class="ru">ходить</span> (à pied)<br><span class="ru">ехать</span> / <span class="ru">ездить</span> (en véhicule)<br><span class="ru">лететь</span> / <span class="ru">летать</span> (en avion)<br><span class="ru">нести</span> / <span class="ru">носить</span> (porter)</div></div>
+  </div>
+
+  <div id="tabInst" class="tab-content">
+    <div class="section-label">INSTALLER</div>
+    <div class="rule-box"><div class="rule-title">ANDROID (CHROME)</div><div class="rule-body">⋮ Menu → "Ajouter à l'écran d'accueil"</div></div>
+    <div class="rule-box"><div class="rule-title">IOS (SAFARI)</div><div class="rule-body">Partager → "Sur l'écran d'accueil"</div></div>
+    <div class="rule-box"><div class="rule-title">SAUVEGARDE AUTOMATIQUE ✓</div><div class="rule-body">Progression, erreurs et stats sauvegardées automatiquement.</div></div>
+    <button class="btn-secondary" onclick="exportData()">⬇ Exporter mes données</button>
+    <button class="btn-secondary" onclick="document.getElementById('importFile').click()">⬆ Importer</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    <button class="btn-danger" onclick="resetStats()">↺ Réinitialiser</button>
+  </div>
+</div>
+
+<!-- EXERCISE SCREEN -->
+<div id="exScreen" class="hidden">
+  <div class="header">
+    <div class="header-title">РУССКИЙ · VERBES</div>
+    <div class="score-badge"><span class="sc-r">✓ <span id="exR">0</span></span><span>·</span><span class="sc-w">✗ <span id="exW">0</span></span></div>
+  </div>
+  <div class="ex-screen">
+    <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+    <div class="ex-header">
+      <div class="ex-type-badge" id="exBadge">QCM</div>
+      <div class="hard-badge hidden" id="hardBadge">🔥 DIFFICILE</div>
+    </div>
+    <div class="chrono-wrap hidden" id="chronoWrap">
+      <div class="chrono-bar-bg"><div class="chrono-bar" id="chronoBar" style="width:100%;background:var(--green)"></div></div>
+      <div class="chrono-num" id="chronoNum">15</div>
+    </div>
+    <div class="streak-bar" id="streakBar"></div>
+    <div id="qCard"></div>
+    <div id="aZone"></div>
+    <div id="fbZone" class="hidden"></div>
+    <button class="btn-primary hidden" id="nextBtn" onclick="nextQ()">SUIVANT →</button>
+    <button class="btn-secondary hidden" id="homeBtn" onclick="goHome()">↩ Accueil</button>
+  </div>
+</div>
+
+<!-- RESULT SCREEN -->
+<div id="resultScreen" class="hidden result-screen">
+  <div class="result-pct" id="resPct">0%</div>
+  <div class="result-label">SCORE FINAL</div>
+  <div class="result-grid">
+    <div class="stat-box"><div class="stat-num ok" id="resR">0</div><div class="stat-lbl">CORRECTES</div></div>
+    <div class="stat-box"><div class="stat-num ko" id="resW">0</div><div class="stat-lbl">ERREURS</div></div>
+  </div>
+  <div id="resDetails" style="text-align:left;margin-bottom:20px;"></div>
+  <div style="font-family:var(--font-mono);font-size:13px;color:var(--gold-light);margin-bottom:20px;" id="resMsg"></div>
+  <button class="btn-primary" onclick="startSession(false)" style="margin-top:0">REJOUER →</button>
+  <button class="btn-secondary" id="replayErrBtn" style="display:none" onclick="startSession(true)">🔁 RÉVISER ERREURS</button>
+  <button class="btn-secondary" onclick="goHome()">↩ Accueil</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// DONNÉES
+// ══════════════════════════════════════════════════════
+const VERBES = [
+{"ru": "быть", "fr": "être", "asp": "imp", "pair": "", "pres": ["—", "—", "есть", "—", "—", "—"], "past": ["был", "была", "было", "были"], "fut": ["буду", "будешь", "будет", "будем", "будете", "будут"], "imp": ["будь", "будьте"], "note": "Verbe auxiliaire. Présent omis sauf \"есть\". Futur sert d'auxiliaire.", "imp_fr": ["sois", "soyez"], "conj_fr": {"pres": ["suis", "es", "est", "sommes", "êtes", "sont"], "past": ["était", "était", "était", "étaient"], "fut": ["serai", "seras", "sera", "serons", "serez", "seront"]}},
+{"ru": "иметь", "fr": "avoir / posséder", "asp": "imp", "pair": "", "pres": ["имею", "имеешь", "имеет", "имеем", "имеете", "имеют"], "past": ["имел", "имела", "имело", "имели"], "fut": ["буду иметь", "будешь иметь", "будет иметь", "будем иметь", "будете иметь", "будут иметь"], "imp": ["имей", "имейте"], "note": "Rare au quotidien; «у меня есть» plus courant pour \"j'ai\".", "imp_fr": ["aie", "ayez"], "conj_fr": {"pres": ["ai", "as", "a", "avons", "avez", "ont"], "past": ["avait", "avait", "avait", "avaient"], "fut": ["aurai", "auras", "aura", "aurons", "aurez", "auront"]}},
+{"ru": "говорить", "fr": "parler / dire", "asp": "imp", "pair": "сказать", "pres": ["говорю", "говоришь", "говорит", "говорим", "говорите", "говорят"], "past": ["говорил", "говорила", "говорило", "говорили"], "fut": ["буду говорить", "будешь говорить", "будет говорить", "будем говорить", "будете говорить", "будут говорить"], "imp": ["говори", "говорите"], "note": "Conj. 2e type (-ить). Alternance г→ж à la 1ère pers.", "imp_fr": ["parle / dis", "parlez / dites"], "conj_fr": {"pres": ["parle", "parles", "parle", "parlons", "parlez", "parlent"], "past": ["parlait", "parlait", "parlait", "parlaient"], "fut": ["parlerrai", "parlerras", "parlerra", "parlerrons", "parlerrez", "parlerront"]}},
+{"ru": "сказать", "fr": "dire (pf)", "asp": "pf", "pair": "говорить", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["сказал", "сказала", "сказало", "сказали"], "fut": ["скажу", "скажешь", "скажет", "скажем", "скажете", "скажут"], "imp": ["скажи", "скажите"], "note": "Perfectif de говорить. Alternance з→ж.", "imp_fr": ["dis", "dites"], "conj_fr": {"pres": ["dis", "dis", "di", "dions", "diez", "dient"], "past": ["a di", "a di", "a di", "ont di"], "fut": ["dirrai", "dirras", "dirra", "dirrons", "dirrez", "dirront"]}},
+{"ru": "делать", "fr": "faire", "asp": "imp", "pair": "сделать", "pres": ["делаю", "делаешь", "делает", "делаем", "делаете", "делают"], "past": ["делал", "делала", "делало", "делали"], "fut": ["буду делать", "будешь делать", "будет делать", "будем делать", "будете делать", "будут делать"], "imp": ["делай", "делайте"], "note": "Conj. 1er type régulier (-ать).", "imp_fr": ["fais", "faites"], "conj_fr": {"pres": ["fais", "fais", "fait", "faisons", "faites", "font"], "past": ["faisait", "faisait", "faisait", "faisaient"], "fut": ["ferai", "feras", "fera", "ferons", "ferez", "feront"]}},
+{"ru": "сделать", "fr": "faire (pf) / accomplir", "asp": "pf", "pair": "делать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["сделал", "сделала", "сделало", "сделали"], "fut": ["сделаю", "сделаешь", "сделает", "сделаем", "сделаете", "сделают"], "imp": ["сделай", "сделайте"], "note": "Perfectif de делать.", "imp_fr": ["fais", "faites"], "conj_fr": {"pres": ["fais", "fais", "fait", "faisons", "faites", "font"], "past": ["a fait", "a fait", "a fait", "ont faient"], "fut": ["ferai", "feras", "fera", "ferons", "ferez", "feront"]}},
+{"ru": "видеть", "fr": "voir", "asp": "imp", "pair": "увидеть", "pres": ["вижу", "видишь", "видит", "видим", "видите", "видят"], "past": ["видел", "видела", "видело", "видели"], "fut": ["буду видеть", "будешь видеть", "будет видеть", "будем видеть", "будете видеть", "будут видеть"], "imp": ["смотри", "смотрите"], "note": "Alternance д→ж à la 1ère pers. sg.", "imp_fr": ["vois", "voyez"], "conj_fr": {"pres": ["vois", "vois", "voit", "voyons", "voyez", "voient"], "past": ["voyait", "voyait", "voyait", "voyaient"], "fut": ["verrai", "verras", "verra", "verrons", "verrez", "verront"]}},
+{"ru": "увидеть", "fr": "voir (pf) / apercevoir", "asp": "pf", "pair": "видеть", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["увидел", "увидела", "увидело", "увидели"], "fut": ["увижу", "увидишь", "увидит", "увидим", "увидите", "увидят"], "imp": ["увидь", "увидьте"], "note": "Perfectif de видеть.", "imp_fr": ["vois", "voyez"], "conj_fr": {"pres": ["vois", "vois", "voit", "voyons", "voyez", "voient"], "past": ["a vu", "a vu", "a vu", "ont vu"], "fut": ["verrai", "verras", "verra", "verrons", "verrez", "verront"]}},
+{"ru": "знать", "fr": "savoir / connaître", "asp": "imp", "pair": "узнать", "pres": ["знаю", "знаешь", "знает", "знаем", "знаете", "знают"], "past": ["знал", "знала", "знало", "знали"], "fut": ["буду знать", "будешь знать", "будет знать", "будем знать", "будете знать", "будут знать"], "imp": ["знай", "знайте"], "note": "Verbe très fréquent. Conj. 1er type régulier.", "imp_fr": ["sache", "sachez"], "conj_fr": {"pres": ["sais", "sais", "sait", "savons", "savez", "savent"], "past": ["savait", "savait", "savait", "savaient"], "fut": ["saurai", "sauras", "saura", "saurons", "saurez", "sauront"]}},
+{"ru": "узнать", "fr": "apprendre / reconnaître (pf)", "asp": "pf", "pair": "знать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["узнал", "узнала", "узнало", "узнали"], "fut": ["узнаю", "узнаешь", "узнает", "узнаем", "узнаете", "узнают"], "imp": ["узнай", "узнайте"], "note": "Perfectif de знать.", "imp_fr": ["apprends", "apprenez"], "conj_fr": {"pres": ["apprends", "apprends", "apprend", "apprenons", "apprenez", "apprennent"], "past": ["a appris", "a appris", "a appris", "ont appris"], "fut": ["apprendrai", "apprendras", "apprendra", "apprendrons", "apprendrez", "apprendront"]}},
+{"ru": "хотеть", "fr": "vouloir", "asp": "imp", "pair": "", "pres": ["хочу", "хочешь", "хочет", "хотим", "хотите", "хотят"], "past": ["хотел", "хотела", "хотело", "хотели"], "fut": ["буду хотеть", "будешь хотеть", "будет хотеть", "будем хотеть", "будете хотеть", "будут хотеть"], "imp": ["хоти", "хотите"], "note": "Verbe hétéroclite: sg conj. type 1, pl type 2.", "imp_fr": ["veux", "voulez"], "conj_fr": {"pres": ["veux", "veux", "veut", "voulons", "voulez", "veulent"], "past": ["voulait", "voulait", "voulait", "voulaient"], "fut": ["voudrai", "voudras", "voudra", "voudrons", "voudrez", "voudront"]}},
+{"ru": "мочь", "fr": "pouvoir", "asp": "imp", "pair": "смочь", "pres": ["могу", "можешь", "может", "можем", "можете", "могут"], "past": ["мог", "могла", "могло", "могли"], "fut": ["буду мочь", "будешь мочь", "будет мочь", "будем мочь", "будете мочь", "будут мочь"], "imp": ["—", "—"], "note": "Alternance г→ж. Pas d'impératif usuel.", "imp_fr": ["—", "—"], "conj_fr": {"pres": ["peux", "peux", "peut", "pouvons", "pouvez", "peuvent"], "past": ["pouvait", "pouvait", "pouvait", "pouvaient"], "fut": ["pourrai", "pourras", "pourra", "pourrons", "pourrez", "pourront"]}},
+{"ru": "смочь", "fr": "pouvoir (pf) / réussir à", "asp": "pf", "pair": "мочь", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["смог", "смогла", "смогло", "смогли"], "fut": ["смогу", "сможешь", "сможет", "сможем", "сможете", "смогут"], "imp": ["—", "—"], "note": "Perfectif de мочь.", "imp_fr": ["—", "—"], "conj_fr": {"pres": ["peux", "peux", "peut", "pouvons", "pouvez", "peuvent"], "past": ["a pu", "a pu", "a pu", "ont pu"], "fut": ["pourrai", "pourras", "pourra", "pourrons", "pourrez", "pourront"]}},
+{"ru": "идти", "fr": "aller (à pied, mouvement direct)", "asp": "imp", "pair": "пойти", "pres": ["иду", "идёшь", "идёт", "идём", "идёте", "идут"], "past": ["шёл", "шла", "шло", "шли"], "fut": ["буду идти", "будешь идти", "будет идти", "будем идти", "будете идти", "будут идти"], "imp": ["иди", "идите"], "note": "Verbe de mouvement déterminé. Passé irrégulier: шёл/шла.", "imp_fr": ["va", "allez"], "conj_fr": {"pres": ["vais", "vas", "va", "allons", "allez", "vont"], "past": ["allait", "allait", "allait", "allaient"], "fut": ["irai", "iras", "ira", "irons", "irez", "iront"]}},
+{"ru": "пойти", "fr": "aller / partir (pf)", "asp": "pf", "pair": "идти", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["пошёл", "пошла", "пошло", "пошли"], "fut": ["пойду", "пойдёшь", "пойдёт", "пойдём", "пойдёте", "пойдут"], "imp": ["пойди", "пойдите"], "note": "Perfectif de идти. Passé irrégulier.", "imp_fr": ["va", "allez"], "conj_fr": {"pres": ["vais", "vas", "va", "allons", "allez", "vont"], "past": ["a allé", "a allé", "a allé", "ont allé"], "fut": ["irai", "iras", "ira", "irons", "irez", "iront"]}},
+{"ru": "ходить", "fr": "aller (habituellement) / marcher", "asp": "imp", "pair": "", "pres": ["хожу", "ходишь", "ходит", "ходим", "ходите", "ходят"], "past": ["ходил", "ходила", "ходило", "ходили"], "fut": ["буду ходить", "будешь ходить", "будет ходить", "будем ходить", "будете ходить", "будут ходить"], "imp": ["ходи", "ходите"], "note": "Verbe de mouvement indéterminé. Alternance д→ж.", "imp_fr": ["marche", "marchez"], "conj_fr": {"pres": ["vais", "vas", "va", "allons", "allez", "vont"], "past": ["allait", "allait", "allait", "allaient"], "fut": ["irai", "iras", "ira", "irons", "irez", "iront"]}},
+{"ru": "приходить", "fr": "venir / arriver (habituellement)", "asp": "imp", "pair": "прийти", "pres": ["прихожу", "приходишь", "приходит", "приходим", "приходите", "приходят"], "past": ["приходил", "приходила", "приходило", "приходили"], "fut": ["буду приходить", "будешь приходить", "будет приходить", "будем приходить", "будете приходить", "будут приходить"], "imp": ["приходи", "приходите"], "note": "Alternance д→ж à la 1ère pers.", "imp_fr": ["viens", "venez"], "conj_fr": {"pres": ["viens", "viens", "vient", "venons", "venez", "viennent"], "past": ["venait", "venait", "venait", "venaient"], "fut": ["viendrai", "viendras", "viendra", "viendrons", "viendrez", "viendront"]}},
+{"ru": "прийти", "fr": "venir / arriver (pf)", "asp": "pf", "pair": "приходить", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["пришёл", "пришла", "пришло", "пришли"], "fut": ["приду", "придёшь", "придёт", "придём", "придёте", "придут"], "imp": ["приди", "придите"], "note": "Perfectif de приходить. Passé irrégulier.", "imp_fr": ["viens", "venez"], "conj_fr": {"pres": ["viens", "viens", "vient", "venons", "venez", "viennent"], "past": ["a venu", "a venu", "a venu", "ont venu"], "fut": ["viendrai", "viendras", "viendra", "viendrons", "viendrez", "viendront"]}},
+{"ru": "брать", "fr": "prendre", "asp": "imp", "pair": "взять", "pres": ["беру", "берёшь", "берёт", "берём", "берёте", "берут"], "past": ["брал", "брала", "брало", "брали"], "fut": ["буду брать", "будешь брать", "будет брать", "будем брать", "будете брать", "будут брать"], "imp": ["бери", "берите"], "note": "Alternance а→е au présent. Accentuation mobile.", "imp_fr": ["prends", "prenez"], "conj_fr": {"pres": ["prends", "prends", "prend", "prenons", "prenez", "prennent"], "past": ["prenait", "prenait", "prenait", "prenaient"], "fut": ["prendrai", "prendras", "prendra", "prendrons", "prendrez", "prendront"]}},
+{"ru": "взять", "fr": "prendre (pf) / saisir", "asp": "pf", "pair": "брать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["взял", "взяла", "взяло", "взяли"], "fut": ["возьму", "возьмёшь", "возьмёт", "возьмём", "возьмёте", "возьмут"], "imp": ["возьми", "возьмите"], "note": "Perfectif de брать. Radical complètement différent.", "imp_fr": ["prends", "prenez"], "conj_fr": {"pres": ["prends", "prends", "prend", "prenons", "prenez", "prennent"], "past": ["a pris", "a pris", "a pris", "ont pris"], "fut": ["prendrai", "prendras", "prendra", "prendrons", "prendrez", "prendront"]}},
+{"ru": "давать", "fr": "donner (habituellement)", "asp": "imp", "pair": "дать", "pres": ["даю", "даёшь", "даёт", "даём", "даёте", "дают"], "past": ["давал", "давала", "давало", "давали"], "fut": ["буду давать", "будешь давать", "будет давать", "будем давать", "будете давать", "будут давать"], "imp": ["давай", "давайте"], "note": "Base -да- + suffixe -вать. Impératif \"давай\" très usuel.", "imp_fr": ["donne", "donnez"], "conj_fr": {"pres": ["donne", "donnes", "donne", "donnons", "donnez", "donnent"], "past": ["donnait", "donnait", "donnait", "donnaient"], "fut": ["donnerai", "donneras", "donnera", "donnerons", "donnerez", "donneront"]}},
+{"ru": "дать", "fr": "donner (pf)", "asp": "pf", "pair": "давать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["дал", "дала", "дало", "дали"], "fut": ["дам", "дашь", "даст", "дадим", "дадите", "дадут"], "imp": ["дай", "дайте"], "note": "Verbe archaïque: futur hétéroclite unique en russe.", "imp_fr": ["donne", "donnez"], "conj_fr": {"pres": ["donne", "donnes", "donne", "donnons", "donnez", "donnent"], "past": ["a donné", "a donné", "a donné", "ont donné"], "fut": ["donnerai", "donneras", "donnera", "donnerons", "donnerez", "donneront"]}},
+{"ru": "читать", "fr": "lire", "asp": "imp", "pair": "прочитать", "pres": ["читаю", "читаешь", "читает", "читаем", "читаете", "читают"], "past": ["читал", "читала", "читало", "читали"], "fut": ["буду читать", "будешь читать", "будет читать", "будем читать", "будете читать", "будут читать"], "imp": ["читай", "читайте"], "note": "Conj. 1er type régulier.", "imp_fr": ["lis", "lisez"], "conj_fr": {"pres": ["lis", "lis", "lit", "lisons", "lisez", "lisent"], "past": ["lisait", "lisait", "lisait", "lisaient"], "fut": ["lirai", "liras", "lira", "lirons", "lirez", "liront"]}},
+{"ru": "прочитать", "fr": "lire (pf) / finir de lire", "asp": "pf", "pair": "читать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["прочитал", "прочитала", "прочитало", "прочитали"], "fut": ["прочитаю", "прочитаешь", "прочитает", "прочитаем", "прочитаете", "прочитают"], "imp": ["прочитай", "прочитайте"], "note": "Perfectif de читать.", "imp_fr": ["lis", "lisez"], "conj_fr": {"pres": ["lis", "lis", "lit", "lisons", "lisez", "lisent"], "past": ["a lu", "a lu", "a lu", "ont lu"], "fut": ["lirai", "liras", "lira", "lirons", "lirez", "liront"]}},
+{"ru": "писать", "fr": "écrire", "asp": "imp", "pair": "написать", "pres": ["пишу", "пишешь", "пишет", "пишем", "пишете", "пишут"], "past": ["писал", "писала", "писало", "писали"], "fut": ["буду писать", "будешь писать", "будет писать", "будем писать", "будете писать", "будут писать"], "imp": ["пиши", "пишите"], "note": "Alternance с→ш au présent.", "imp_fr": ["écris", "écrivez"], "conj_fr": {"pres": ["écris", "écris", "écrit", "écrivons", "écrivez", "écrivent"], "past": ["écrivait", "écrivait", "écrivait", "écrivaient"], "fut": ["écrirai", "écriras", "écrira", "écrirons", "écrirez", "écriront"]}},
+{"ru": "написать", "fr": "écrire (pf)", "asp": "pf", "pair": "писать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["написал", "написала", "написало", "написали"], "fut": ["напишу", "напишешь", "напишет", "напишем", "напишете", "напишут"], "imp": ["напиши", "напишите"], "note": "Perfectif de писать.", "imp_fr": ["écris", "écrivez"], "conj_fr": {"pres": ["écris", "écris", "écrit", "écrivons", "écrivez", "écrivent"], "past": ["a écrit", "a écrit", "a écrit", "ont écrit"], "fut": ["écrirai", "écriras", "écrira", "écrirons", "écrirez", "écriront"]}},
+{"ru": "работать", "fr": "travailler", "asp": "imp", "pair": "", "pres": ["работаю", "работаешь", "работает", "работаем", "работаете", "работают"], "past": ["работал", "работала", "работало", "работали"], "fut": ["буду работать", "будешь работать", "будет работать", "будем работать", "будете работать", "будут работать"], "imp": ["работай", "работайте"], "note": "Conj. 1er type régulier.", "imp_fr": ["travaille", "travaillez"], "conj_fr": {"pres": ["travaille", "travailles", "travaille", "travaillons", "travaillez", "travaillent"], "past": ["travaillait", "travaillait", "travaillait", "travaillaient"], "fut": ["travaillerrai", "travaillerras", "travaillerra", "travaillerrons", "travaillerrez", "travaillerront"]}},
+{"ru": "жить", "fr": "vivre / habiter", "asp": "imp", "pair": "", "pres": ["живу", "живёшь", "живёт", "живём", "живёте", "живут"], "past": ["жил", "жила", "жило", "жили"], "fut": ["буду жить", "будешь жить", "будет жить", "будем жить", "будете жить", "будут жить"], "imp": ["живи", "живите"], "note": "Accentuation mobile au passé: жил/жила.", "imp_fr": ["vis", "vivez"], "conj_fr": {"pres": ["vis", "vis", "vit", "vivons", "vivez", "vivent"], "past": ["vivait", "vivait", "vivait", "vivaient"], "fut": ["vivrai", "vivras", "vivra", "vivrons", "vivrez", "vivront"]}},
+{"ru": "любить", "fr": "aimer", "asp": "imp", "pair": "", "pres": ["люблю", "любишь", "любит", "любим", "любите", "любят"], "past": ["любил", "любила", "любило", "любили"], "fut": ["буду любить", "будешь любить", "будет любить", "будем любить", "будете любить", "будут любить"], "imp": ["люби", "любите"], "note": "Alternance б→бл à la 1ère pers. sg.", "imp_fr": ["aime", "aimez"], "conj_fr": {"pres": ["aime", "aimes", "aime", "aimons", "aimez", "aiment"], "past": ["aimait", "aimait", "aimait", "aimaient"], "fut": ["aimerrai", "aimerras", "aimerra", "aimerrons", "aimerrez", "aimerront"]}},
+{"ru": "думать", "fr": "penser / réfléchir", "asp": "imp", "pair": "подумать", "pres": ["думаю", "думаешь", "думает", "думаем", "думаете", "думают"], "past": ["думал", "думала", "думало", "думали"], "fut": ["буду думать", "будешь думать", "будет думать", "будем думать", "будете думать", "будут думать"], "imp": ["думай", "думайте"], "note": "Conj. 1er type régulier.", "imp_fr": ["pense / réfléchis", "pensez / réfléchissez"], "conj_fr": {"pres": ["pense", "penses", "pense", "pensons", "pensez", "pensent"], "past": ["pensait", "pensait", "pensait", "pensaient"], "fut": ["penserrai", "penserras", "penserra", "penserrons", "penserrez", "penserront"]}},
+{"ru": "подумать", "fr": "réfléchir (pf) / penser un moment", "asp": "pf", "pair": "думать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["подумал", "подумала", "подумало", "подумали"], "fut": ["подумаю", "подумаешь", "подумает", "подумаем", "подумаете", "подумают"], "imp": ["подумай", "подумайте"], "note": "Perfectif de думать.", "imp_fr": ["réfléchis", "réfléchissez"], "conj_fr": {"pres": ["réfléchis", "réfléchis", "réfléchit", "réfléchissons", "réfléchissez", "réfléchissent"], "past": ["a réfléchi", "a réfléchi", "a réfléchi", "ont réfléchi"], "fut": ["réfléchirrai", "réfléchirras", "réfléchirra", "réfléchirrons", "réfléchirrez", "réfléchirront"]}},
+{"ru": "отвечать", "fr": "répondre", "asp": "imp", "pair": "ответить", "pres": ["отвечаю", "отвечаешь", "отвечает", "отвечаем", "отвечаете", "отвечают"], "past": ["отвечал", "отвечала", "отвечало", "отвечали"], "fut": ["буду отвечать", "будешь отвечать", "будет отвечать", "будем отвечать", "будете отвечать", "будут отвечать"], "imp": ["отвечай", "отвечайте"], "note": "Conj. 1er type.", "imp_fr": ["réponds", "répondez"], "conj_fr": {"pres": ["réponds", "réponds", "répond", "répondons", "répondez", "répondent"], "past": ["répondait", "répondait", "répondait", "répondaient"], "fut": ["répondrai", "répondras", "répondra", "répondrons", "répondrez", "répondront"]}},
+{"ru": "ответить", "fr": "répondre (pf)", "asp": "pf", "pair": "отвечать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["ответил", "ответила", "ответило", "ответили"], "fut": ["отвечу", "ответишь", "ответит", "ответим", "ответите", "ответят"], "imp": ["ответь", "ответьте"], "note": "Alternance т→ч à la 1ère pers.", "imp_fr": ["réponds", "répondez"], "conj_fr": {"pres": ["réponds", "réponds", "répond", "répondons", "répondez", "répondent"], "past": ["a répondu", "a répondu", "a répondu", "ont répondu"], "fut": ["répondrai", "répondras", "répondra", "répondrons", "répondrez", "répondront"]}},
+{"ru": "спрашивать", "fr": "demander / interroger", "asp": "imp", "pair": "спросить", "pres": ["спрашиваю", "спрашиваешь", "спрашивает", "спрашиваем", "спрашиваете", "спрашивают"], "past": ["спрашивал", "спрашивала", "спрашивало", "спрашивали"], "fut": ["буду спрашивать", "будешь спрашивать", "будет спрашивать", "будем спрашивать", "будете спрашивать", "будут спрашивать"], "imp": ["спрашивай", "спрашивайте"], "note": "Conj. 1er type.", "imp_fr": ["demande", "demandez"], "conj_fr": {"pres": ["demande", "demandes", "demande", "demandons", "demandez", "demandent"], "past": ["demandait", "demandait", "demandait", "demandaient"], "fut": ["demanderrai", "demanderras", "demanderra", "demanderrons", "demanderrez", "demanderront"]}},
+{"ru": "спросить", "fr": "demander (pf)", "asp": "pf", "pair": "спрашивать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["спросил", "спросила", "спросило", "спросили"], "fut": ["спрошу", "спросишь", "спросит", "спросим", "спросите", "спросят"], "imp": ["спроси", "спросите"], "note": "Alternance с→ш à la 1ère pers.", "imp_fr": ["demande", "demandez"], "conj_fr": {"pres": ["demande", "demandes", "demande", "demandons", "demandez", "demandent"], "past": ["a demandé", "a demandé", "a demandé", "ont demandé"], "fut": ["demanderrai", "demanderras", "demanderra", "demanderrons", "demanderrez", "demanderront"]}},
+{"ru": "понимать", "fr": "comprendre", "asp": "imp", "pair": "понять", "pres": ["понимаю", "понимаешь", "понимает", "понимаем", "понимаете", "понимают"], "past": ["понимал", "понимала", "понимало", "понимали"], "fut": ["буду понимать", "будешь понимать", "будет понимать", "будем понимать", "будете понимать", "будут понимать"], "imp": ["понимай", "понимайте"], "note": "Conj. 1er type.", "imp_fr": ["comprends", "comprenez"], "conj_fr": {"pres": ["comprends", "comprends", "comprend", "comprenons", "comprenez", "comprennent"], "past": ["comprenait", "comprenait", "comprenait", "comprenaient"], "fut": ["comprendrai", "comprendras", "comprendra", "comprendrons", "comprendrez", "comprendront"]}},
+{"ru": "понять", "fr": "comprendre (pf) / saisir", "asp": "pf", "pair": "понимать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["понял", "поняла", "поняло", "поняли"], "fut": ["пойму", "поймёшь", "поймёт", "поймём", "поймёте", "поймут"], "imp": ["пойми", "поймите"], "note": "Futur irrégulier: основа пойм-.", "imp_fr": ["comprends", "comprenez"], "conj_fr": {"pres": ["comprends", "comprends", "comprend", "comprenons", "comprenez", "comprennent"], "past": ["a compris", "a compris", "a compris", "ont compris"], "fut": ["comprendrai", "comprendras", "comprendra", "comprendrons", "comprendrez", "comprendront"]}},
+{"ru": "начинать", "fr": "commencer", "asp": "imp", "pair": "начать", "pres": ["начинаю", "начинаешь", "начинает", "начинаем", "начинаете", "начинают"], "past": ["начинал", "начинала", "начинало", "начинали"], "fut": ["буду начинать", "будешь начинать", "будет начинать", "будем начинать", "будете начинать", "будут начинать"], "imp": ["начинай", "начинайте"], "note": "Conj. 1er type.", "imp_fr": ["commence", "commencez"], "conj_fr": {"pres": ["commence", "commences", "commence", "commencons", "commencez", "commencent"], "past": ["commencait", "commencait", "commencait", "commencaient"], "fut": ["commencerrai", "commencerras", "commencerra", "commencerrons", "commencerrez", "commencerront"]}},
+{"ru": "начать", "fr": "commencer (pf)", "asp": "pf", "pair": "начинать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["начал", "начала", "начало", "начали"], "fut": ["начну", "начнёшь", "начнёт", "начнём", "начнёте", "начнут"], "imp": ["начни", "начните"], "note": "Futur: base начн-. Accentuation mobile au passé.", "imp_fr": ["commence", "commencez"], "conj_fr": {"pres": ["commence", "commences", "commence", "commencons", "commencez", "commencent"], "past": ["a commencé", "a commencé", "a commencé", "ont commencé"], "fut": ["commencerrai", "commencerras", "commencerra", "commencerrons", "commencerrez", "commencerront"]}},
+{"ru": "заканчивать", "fr": "finir / terminer", "asp": "imp", "pair": "закончить", "pres": ["заканчиваю", "заканчиваешь", "заканчивает", "заканчиваем", "заканчиваете", "заканчивают"], "past": ["заканчивал", "заканчивала", "заканчивало", "заканчивали"], "fut": ["буду заканчивать", "будешь заканчивать", "будет заканчивать", "будем заканчивать", "будете заканчивать", "будут заканчивать"], "imp": ["заканчивай", "заканчивайте"], "note": "Conj. 1er type.", "imp_fr": ["finis", "finissez"], "conj_fr": {"pres": ["finis", "finis", "finit", "finissons", "finissez", "finissent"], "past": ["finissait", "finissait", "finissait", "finissaient"], "fut": ["finirai", "finiras", "finira", "finirons", "finirez", "finiront"]}},
+{"ru": "закончить", "fr": "finir (pf)", "asp": "pf", "pair": "заканчивать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["закончил", "закончила", "закончило", "закончили"], "fut": ["закончу", "закончишь", "закончит", "закончим", "закончите", "закончат"], "imp": ["закончи", "закончите"], "note": "Conj. 2e type.", "imp_fr": ["finis", "finissez"], "conj_fr": {"pres": ["finis", "finis", "finit", "finissons", "finissez", "finissent"], "past": ["a fini", "a fini", "a fini", "ont fini"], "fut": ["finirai", "finiras", "finira", "finirons", "finirez", "finiront"]}},
+{"ru": "возвращаться", "fr": "revenir / retourner", "asp": "imp", "pair": "вернуться", "pres": ["возвращаюсь", "возвращаешься", "возвращается", "возвращаемся", "возвращаетесь", "возвращаются"], "past": ["возвращался", "возвращалась", "возвращалось", "возвращались"], "fut": ["буду возвращаться", "будешь возвращаться", "будет возвращаться", "будем возвращаться", "будете возвращаться", "будут возвращаться"], "imp": ["возвращайся", "возвращайтесь"], "note": "Verbe réfléchi (-ся). Conj. 1er type.", "imp_fr": ["reviens / retourne-toi", "revenez / retournez-vous"], "conj_fr": {"pres": ["revenis", "revenis", "revenit", "revenissons", "revenissez", "revenissent"], "past": ["revenait", "revenait", "revenait", "revenaient"], "fut": ["revenirrai", "revenirras", "revenirra", "revenirrons", "revenirrez", "revenirront"]}},
+{"ru": "вернуться", "fr": "revenir (pf) / rentrer", "asp": "pf", "pair": "возвращаться", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["вернулся", "вернулась", "вернулось", "вернулись"], "fut": ["вернусь", "вернёшься", "вернётся", "вернёмся", "вернётесь", "вернутся"], "imp": ["вернись", "вернитесь"], "note": "Perfectif réfléchi de возвращаться.", "imp_fr": ["reviens", "revenez"], "conj_fr": {"pres": ["revenis", "revenis", "revenit", "revenissons", "revenissez", "revenissent"], "past": ["s'est revenu", "s'est revenue", "s'est revenu(e)", "se sont revenus"], "fut": ["revenirrai", "revenirras", "revenirra", "revenirrons", "revenirrez", "revenirront"]}},
+{"ru": "есть", "fr": "manger", "asp": "imp", "pair": "съесть", "pres": ["ем", "ешь", "ест", "едим", "едите", "едят"], "past": ["ел", "ела", "ело", "ели"], "fut": ["буду есть", "будешь есть", "будет есть", "будем есть", "будете есть", "будут есть"], "imp": ["ешь", "ешьте"], "note": "Verbe hétéroclite très irrégulier. Ne pas confondre avec \"есть\" (il y a).", "imp_fr": ["mange", "mangez"], "conj_fr": {"pres": ["mange", "manges", "mange", "mangeons", "mangez", "mangent"], "past": ["mangeait", "mangeait", "mangeait", "mangeaient"], "fut": ["mangerai", "mangeras", "mangera", "mangerons", "mangerez", "mangeront"]}},
+{"ru": "съесть", "fr": "manger (pf) / finir de manger", "asp": "pf", "pair": "есть", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["съел", "съела", "съело", "съели"], "fut": ["съем", "съешь", "съест", "съедим", "съедите", "съедят"], "imp": ["съешь", "съешьте"], "note": "Perfectif de есть (manger).", "imp_fr": ["mange", "mangez"], "conj_fr": {"pres": ["mange", "manges", "mange", "mangeons", "mangez", "mangent"], "past": ["a mangé", "a mangé", "a mangé", "ont mangé"], "fut": ["mangerai", "mangeras", "mangera", "mangerons", "mangerez", "mangeront"]}},
+{"ru": "пить", "fr": "boire", "asp": "imp", "pair": "выпить", "pres": ["пью", "пьёшь", "пьёт", "пьём", "пьёте", "пьют"], "past": ["пил", "пила", "пило", "пили"], "fut": ["буду пить", "будешь пить", "будет пить", "будем пить", "будете пить", "будут пить"], "imp": ["пей", "пейте"], "note": "Base пь- au présent. Accentuation mobile au passé.", "imp_fr": ["bois", "buvez"], "conj_fr": {"pres": ["bois", "bois", "boit", "buvons", "buvez", "boivent"], "past": ["buvait", "buvait", "buvait", "buvaient"], "fut": ["boirai", "boiras", "boira", "boirons", "boirez", "boiront"]}},
+{"ru": "выпить", "fr": "boire (pf) / finir de boire", "asp": "pf", "pair": "пить", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["выпил", "выпила", "выпило", "выпили"], "fut": ["выпью", "выпьешь", "выпьет", "выпьем", "выпьете", "выпьют"], "imp": ["выпей", "выпейте"], "note": "Perfectif de пить.", "imp_fr": ["bois", "buvez"], "conj_fr": {"pres": ["bois", "bois", "boit", "buvons", "buvez", "boivent"], "past": ["a bu", "a bu", "a bu", "ont bu"], "fut": ["boirai", "boiras", "boira", "boirons", "boirez", "boiront"]}},
+{"ru": "разговаривать", "fr": "parler / discuter", "asp": "imp", "pair": "", "pres": ["разговариваю", "разговариваешь", "разговаривает", "разговариваем", "разговариваете", "разговаривают"], "past": ["разговаривал", "разговаривала", "разговаривало", "разговаривали"], "fut": ["буду разговаривать", "будешь разговаривать", "будет разговаривать", "будем разговаривать", "будете разговаривать", "будут разговаривать"], "imp": ["разговаривай", "разговаривайте"], "note": "Conj. 1er type. Souvent sans perfectif lexical propre.", "imp_fr": ["parle", "parlez"], "conj_fr": {"pres": ["parle", "parles", "parle", "parlons", "parlez", "parlent"], "past": ["parlait", "parlait", "parlait", "parlaient"], "fut": ["parlerrai", "parlerras", "parlerra", "parlerrons", "parlerrez", "parlerront"]}},
+{"ru": "слушать", "fr": "écouter", "asp": "imp", "pair": "послушать", "pres": ["слушаю", "слушаешь", "слушает", "слушаем", "слушаете", "слушают"], "past": ["слушал", "слушала", "слушало", "слушали"], "fut": ["буду слушать", "будешь слушать", "будет слушать", "будем слушать", "будете слушать", "будут слушать"], "imp": ["слушай", "слушайте"], "note": "Conj. 1er type. \"Слушай!\" très usuel.", "imp_fr": ["écoute", "écoutez"], "conj_fr": {"pres": ["écoute", "écoutes", "écoute", "écoutons", "écoutez", "écoutent"], "past": ["écoutait", "écoutait", "écoutait", "écoutaient"], "fut": ["écouterrai", "écouterras", "écouterra", "écouterrons", "écouterrez", "écouterront"]}},
+{"ru": "послушать", "fr": "écouter (pf) / écouter un moment", "asp": "pf", "pair": "слушать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["послушал", "послушала", "послушало", "послушали"], "fut": ["послушаю", "послушаешь", "послушает", "послушаем", "послушаете", "послушают"], "imp": ["послушай", "послушайте"], "note": "Perfectif de слушать.", "imp_fr": ["écoute", "écoutez"], "conj_fr": {"pres": ["écoute", "écoutes", "écoute", "écoutons", "écoutez", "écoutent"], "past": ["a écouté", "a écouté", "a écouté", "ont écouté"], "fut": ["écouterrai", "écouterras", "écouterra", "écouterrons", "écouterrez", "écouterront"]}},
+{"ru": "слышать", "fr": "entendre", "asp": "imp", "pair": "услышать", "pres": ["слышу", "слышишь", "слышит", "слышим", "слышите", "слышат"], "past": ["слышал", "слышала", "слышало", "слышали"], "fut": ["буду слышать", "будешь слышать", "будет слышать", "будем слышать", "будете слышать", "будут слышать"], "imp": ["слышь", "слышьте"], "note": "Conj. 2e type. Differ de слушать (action vs perception).", "imp_fr": ["entends", "entendez"], "conj_fr": {"pres": ["entends", "entends", "entend", "entendons", "entendez", "entendent"], "past": ["entendait", "entendait", "entendait", "entendaient"], "fut": ["entendrai", "entendras", "entendra", "entendrons", "entendrez", "entendront"]}},
+{"ru": "услышать", "fr": "entendre (pf) / percevoir", "asp": "pf", "pair": "слышать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["услышал", "услышала", "услышало", "услышали"], "fut": ["услышу", "услышишь", "услышит", "услышим", "услышите", "услышат"], "imp": ["услышь", "услышьте"], "note": "Perfectif de слышать.", "imp_fr": ["entends", "entendez"], "conj_fr": {"pres": ["entends", "entends", "entend", "entendons", "entendez", "entendent"], "past": ["a entendu", "a entendu", "a entendu", "ont entendu"], "fut": ["entendrai", "entendras", "entendra", "entendrons", "entendrez", "entendront"]}},
+{"ru": "смотреть", "fr": "regarder", "asp": "imp", "pair": "посмотреть", "pres": ["смотрю", "смотришь", "смотрит", "смотрим", "смотрите", "смотрят"], "past": ["смотрел", "смотрела", "смотрело", "смотрели"], "fut": ["буду смотреть", "будешь смотреть", "будет смотреть", "будем смотреть", "будете смотреть", "будут смотреть"], "imp": ["смотри", "смотрите"], "note": "Alternance р→р (stable). Conj. 2e type.", "imp_fr": ["regarde", "regardez"], "conj_fr": {"pres": ["regarde", "regardes", "regarde", "regardons", "regardez", "regardent"], "past": ["regardait", "regardait", "regardait", "regardaient"], "fut": ["regarderrai", "regarderras", "regarderra", "regarderrons", "regarderrez", "regarderront"]}},
+{"ru": "посмотреть", "fr": "regarder (pf) / jeter un œil", "asp": "pf", "pair": "смотреть", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["посмотрел", "посмотрела", "посмотрело", "посмотрели"], "fut": ["посмотрю", "посмотришь", "посмотрит", "посмотрим", "посмотрите", "посмотрят"], "imp": ["посмотри", "посмотрите"], "note": "Perfectif de смотреть.", "imp_fr": ["regarde", "regardez"], "conj_fr": {"pres": ["regarde", "regardes", "regarde", "regardons", "regardez", "regardent"], "past": ["a regardé", "a regardé", "a regardé", "ont regardé"], "fut": ["regarderrai", "regarderras", "regarderra", "regarderrons", "regarderrez", "regarderront"]}},
+{"ru": "продавать", "fr": "vendre", "asp": "imp", "pair": "продать", "pres": ["продаю", "продаёшь", "продаёт", "продаём", "продаёте", "продают"], "past": ["продавал", "продавала", "продавало", "продавали"], "fut": ["буду продавать", "будешь продавать", "будет продавать", "будем продавать", "будете продавать", "будут продавать"], "imp": ["продавай", "продавайте"], "note": "Base -да- + suffixe -вать.", "imp_fr": ["vends", "vendez"], "conj_fr": {"pres": ["vends", "vends", "vend", "vendons", "vendez", "vendent"], "past": ["vendait", "vendait", "vendait", "vendaient"], "fut": ["vendrai", "vendras", "vendra", "vendrons", "vendrez", "vendront"]}},
+{"ru": "продать", "fr": "vendre (pf)", "asp": "pf", "pair": "продавать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["продал", "продала", "продало", "продали"], "fut": ["продам", "продашь", "продаст", "продадим", "продадите", "продадут"], "imp": ["продай", "продайте"], "note": "Futur hétéroclite (comme дать).", "imp_fr": ["vends", "vendez"], "conj_fr": {"pres": ["vends", "vends", "vend", "vendons", "vendez", "vendent"], "past": ["a vendu", "a vendu", "a vendu", "ont vendu"], "fut": ["vendrai", "vendras", "vendra", "vendrons", "vendrez", "vendront"]}},
+{"ru": "покупать", "fr": "acheter", "asp": "imp", "pair": "купить", "pres": ["покупаю", "покупаешь", "покупает", "покупаем", "покупаете", "покупают"], "past": ["покупал", "покупала", "покупало", "покупали"], "fut": ["буду покупать", "будешь покупать", "будет покупать", "будем покупать", "будете покупать", "будут покупать"], "imp": ["покупай", "покупайте"], "note": "Conj. 1er type.", "imp_fr": ["achète", "achetez"], "conj_fr": {"pres": ["achete", "achetes", "achete", "achetons", "achetez", "achetent"], "past": ["achetait", "achetait", "achetait", "achetaient"], "fut": ["acheterrai", "acheterras", "acheterra", "acheterrons", "acheterrez", "acheterront"]}},
+{"ru": "купить", "fr": "acheter (pf)", "asp": "pf", "pair": "покупать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["купил", "купила", "купило", "купили"], "fut": ["куплю", "купишь", "купит", "купим", "купите", "купят"], "imp": ["купи", "купите"], "note": "Alternance п→пл à la 1ère pers.", "imp_fr": ["achète", "achetez"], "conj_fr": {"pres": ["achete", "achetes", "achete", "achetons", "achetez", "achetent"], "past": ["a acheté", "a acheté", "a acheté", "ont acheté"], "fut": ["acheterrai", "acheterras", "acheterra", "acheterrons", "acheterrez", "acheterront"]}},
+{"ru": "встречать", "fr": "rencontrer / accueillir", "asp": "imp", "pair": "встретить", "pres": ["встречаю", "встречаешь", "встречает", "встречаем", "встречаете", "встречают"], "past": ["встречал", "встречала", "встречало", "встречали"], "fut": ["буду встречать", "будешь встречать", "будет встречать", "будем встречать", "будете встречать", "будут встречать"], "imp": ["встречай", "встречайте"], "note": "Conj. 1er type.", "imp_fr": ["rencontre", "rencontrez"], "conj_fr": {"pres": ["rencontre", "rencontres", "rencontre", "rencontrons", "rencontrez", "rencontrent"], "past": ["rencontrait", "rencontrait", "rencontrait", "rencontraient"], "fut": ["rencontrerrai", "rencontrerras", "rencontrerra", "rencontrerrons", "rencontrerrez", "rencontrerront"]}},
+{"ru": "встретить", "fr": "rencontrer (pf)", "asp": "pf", "pair": "встречать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["встретил", "встретила", "встретило", "встретили"], "fut": ["встречу", "встретишь", "встретит", "встретим", "встретите", "встретят"], "imp": ["встреть", "встретьте"], "note": "Alternance т→ч à la 1ère pers.", "imp_fr": ["rencontre", "rencontrez"], "conj_fr": {"pres": ["rencontre", "rencontres", "rencontre", "rencontrons", "rencontrez", "rencontrent"], "past": ["a rencontré", "a rencontré", "a rencontré", "ont rencontré"], "fut": ["rencontrerrai", "rencontrerras", "rencontrerra", "rencontrerrons", "rencontrerrez", "rencontrerront"]}},
+{"ru": "петь", "fr": "chanter", "asp": "imp", "pair": "", "pres": ["пою", "поёшь", "поёт", "поём", "поёте", "поют"], "past": ["пел", "пела", "пело", "пели"], "fut": ["буду петь", "будешь петь", "будет петь", "будем петь", "будете петь", "будут петь"], "imp": ["пой", "пойте"], "note": "Base по- au présent. Conj. 1er type.", "imp_fr": ["chante", "chantez"], "conj_fr": {"pres": ["chante", "chantes", "chante", "chantons", "chantez", "chantent"], "past": ["chantait", "chantait", "chantait", "chantaient"], "fut": ["chanterrai", "chanterras", "chanterra", "chanterrons", "chanterrez", "chanterront"]}},
+{"ru": "играть", "fr": "jouer", "asp": "imp", "pair": "сыграть", "pres": ["играю", "играешь", "играет", "играем", "играете", "играют"], "past": ["играл", "играла", "играло", "играли"], "fut": ["буду играть", "будешь играть", "будет играть", "будем играть", "будете играть", "будут играть"], "imp": ["играй", "играйте"], "note": "Conj. 1er type régulier.", "imp_fr": ["joue", "jouez"], "conj_fr": {"pres": ["joue", "joues", "joue", "jouons", "jouez", "jouent"], "past": ["jouait", "jouait", "jouait", "jouaient"], "fut": ["jouerrai", "jouerras", "jouerra", "jouerrons", "jouerrez", "jouerront"]}},
+{"ru": "сыграть", "fr": "jouer (pf) / interpréter", "asp": "pf", "pair": "играть", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["сыграл", "сыграла", "сыграло", "сыграли"], "fut": ["сыграю", "сыграешь", "сыграет", "сыграем", "сыграете", "сыграют"], "imp": ["сыграй", "сыграйте"], "note": "Perfectif de играть.", "imp_fr": ["joue", "jouez"], "conj_fr": {"pres": ["joue", "joues", "joue", "jouons", "jouez", "jouent"], "past": ["a joué", "a joué", "a joué", "ont joué"], "fut": ["jouerrai", "jouerras", "jouerra", "jouerrons", "jouerrez", "jouerront"]}},
+{"ru": "ждать", "fr": "attendre", "asp": "imp", "pair": "подождать", "pres": ["жду", "ждёшь", "ждёт", "ждём", "ждёте", "ждут"], "past": ["ждал", "ждала", "ждало", "ждали"], "fut": ["буду ждать", "будешь ждать", "будет ждать", "будем ждать", "будете ждать", "будут ждать"], "imp": ["жди", "ждите"], "note": "Accentuation mobile au passé: ждал/ждала.", "imp_fr": ["attends", "attendez"], "conj_fr": {"pres": ["attends", "attends", "attend", "attendons", "attendez", "attendent"], "past": ["attendait", "attendait", "attendait", "attendaient"], "fut": ["attendrai", "attendras", "attendra", "attendrons", "attendrez", "attendront"]}},
+{"ru": "подождать", "fr": "attendre (pf) / patienter", "asp": "pf", "pair": "ждать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["подождал", "подождала", "подождало", "подождали"], "fut": ["подожду", "подождёшь", "подождёт", "подождём", "подождёте", "подождут"], "imp": ["подожди", "подождите"], "note": "Perfectif de ждать.", "imp_fr": ["attends", "attendez"], "conj_fr": {"pres": ["attends", "attends", "attend", "attendons", "attendez", "attendent"], "past": ["a attendu", "a attendu", "a attendu", "ont attendu"], "fut": ["attendrai", "attendras", "attendra", "attendrons", "attendrez", "attendront"]}},
+{"ru": "помогать", "fr": "aider", "asp": "imp", "pair": "помочь", "pres": ["помогаю", "помогаешь", "помогает", "помогаем", "помогаете", "помогают"], "past": ["помогал", "помогала", "помогало", "помогали"], "fut": ["буду помогать", "будешь помогать", "будет помогать", "будем помогать", "будете помогать", "будут помогать"], "imp": ["помогай", "помогайте"], "note": "Conj. 1er type. Gouverne le datif: помогать кому?", "imp_fr": ["aide", "aidez"], "conj_fr": {"pres": ["aide", "aides", "aide", "aidons", "aidez", "aident"], "past": ["aidait", "aidait", "aidait", "aidaient"], "fut": ["aiderrai", "aiderras", "aiderra", "aiderrons", "aiderrez", "aiderront"]}},
+{"ru": "помочь", "fr": "aider (pf)", "asp": "pf", "pair": "помогать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["помог", "помогла", "помогло", "помогли"], "fut": ["помогу", "поможешь", "поможет", "поможем", "поможете", "помогут"], "imp": ["помоги", "помогите"], "note": "Alternance г→ж. Passé fém. irrégulier: помогла.", "imp_fr": ["aide", "aidez"], "conj_fr": {"pres": ["aide", "aides", "aide", "aidons", "aidez", "aident"], "past": ["a aidé", "a aidé", "a aidé", "ont aidé"], "fut": ["aiderrai", "aiderras", "aiderra", "aiderrons", "aiderrez", "aiderront"]}},
+{"ru": "открывать", "fr": "ouvrir", "asp": "imp", "pair": "открыть", "pres": ["открываю", "открываешь", "открывает", "открываем", "открываете", "открывают"], "past": ["открывал", "открывала", "открывало", "открывали"], "fut": ["буду открывать", "будешь открывать", "будет открывать", "будем открывать", "будете открывать", "будут открывать"], "imp": ["открывай", "открывайте"], "note": "Conj. 1er type.", "imp_fr": ["ouvre", "ouvrez"], "conj_fr": {"pres": ["ouvre", "ouvres", "ouvre", "ouvrons", "ouvrez", "ouvrent"], "past": ["ouvrait", "ouvrait", "ouvrait", "ouvraient"], "fut": ["ouvrirai", "ouvriras", "ouvrira", "ouvrirons", "ouvrirez", "ouvriront"]}},
+{"ru": "открыть", "fr": "ouvrir (pf)", "asp": "pf", "pair": "открывать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["открыл", "открыла", "открыло", "открыли"], "fut": ["открою", "откроешь", "откроет", "откроем", "откроете", "откроют"], "imp": ["открой", "откройте"], "note": "Futur: base откро-.", "imp_fr": ["ouvre", "ouvrez"], "conj_fr": {"pres": ["ouvre", "ouvres", "ouvre", "ouvrons", "ouvrez", "ouvrent"], "past": ["a ouvert", "a ouvert", "a ouvert", "ont ouvert"], "fut": ["ouvrirai", "ouvriras", "ouvrira", "ouvrirons", "ouvrirez", "ouvriront"]}},
+{"ru": "закрывать", "fr": "fermer", "asp": "imp", "pair": "закрыть", "pres": ["закрываю", "закрываешь", "закрывает", "закрываем", "закрываете", "закрывают"], "past": ["закрывал", "закрывала", "закрывало", "закрывали"], "fut": ["буду закрывать", "будешь закрывать", "будет закрывать", "будем закрывать", "будете закрывать", "будут закрывать"], "imp": ["закрывай", "закрывайте"], "note": "Conj. 1er type.", "imp_fr": ["ferme", "fermez"], "conj_fr": {"pres": ["ferme", "fermes", "ferme", "fermons", "fermez", "ferment"], "past": ["fermait", "fermait", "fermait", "fermaient"], "fut": ["fermerrai", "fermerras", "fermerra", "fermerrons", "fermerrez", "fermerront"]}},
+{"ru": "закрыть", "fr": "fermer (pf)", "asp": "pf", "pair": "закрывать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["закрыл", "закрыла", "закрыло", "закрыли"], "fut": ["закрою", "закроешь", "закроет", "закроем", "закроете", "закроют"], "imp": ["закрой", "закройте"], "note": "Perfectif de закрывать.", "imp_fr": ["ferme", "fermez"], "conj_fr": {"pres": ["ferme", "fermes", "ferme", "fermons", "fermez", "ferment"], "past": ["a fermé", "a fermé", "a fermé", "ont fermé"], "fut": ["fermerrai", "fermerras", "fermerra", "fermerrons", "fermerrez", "fermerront"]}},
+{"ru": "искать", "fr": "chercher", "asp": "imp", "pair": "найти", "pres": ["ищу", "ищешь", "ищет", "ищем", "ищете", "ищут"], "past": ["искал", "искала", "искало", "искали"], "fut": ["буду искать", "будешь искать", "будет искать", "будем искать", "будете искать", "будут искать"], "imp": ["ищи", "ищите"], "note": "Alternance ск→щ. Paire aspectuelle suppletive: найти.", "imp_fr": ["cherche", "cherchez"], "conj_fr": {"pres": ["cherche", "cherches", "cherche", "cherchons", "cherchez", "cherchent"], "past": ["cherchait", "cherchait", "cherchait", "cherchaient"], "fut": ["chercherrai", "chercherras", "chercherra", "chercherrons", "chercherrez", "chercherront"]}},
+{"ru": "найти", "fr": "trouver (pf)", "asp": "pf", "pair": "искать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["нашёл", "нашла", "нашло", "нашли"], "fut": ["найду", "найдёшь", "найдёт", "найдём", "найдёте", "найдут"], "imp": ["найди", "найдите"], "note": "Passé irrégulier (нашёл/нашла). Futur: base найд-.", "imp_fr": ["trouve", "trouvez"], "conj_fr": {"pres": ["trouve", "trouves", "trouve", "trouvons", "trouvez", "trouvent"], "past": ["a trouvé", "a trouvé", "a trouvé", "ont trouvé"], "fut": ["trouverrai", "trouverras", "trouverra", "trouverrons", "trouverrez", "trouverront"]}},
+{"ru": "звонить", "fr": "téléphoner / appeler", "asp": "imp", "pair": "позвонить", "pres": ["звоню", "звонишь", "звонит", "звоним", "звоните", "звонят"], "past": ["звонил", "звонила", "звонило", "звонили"], "fut": ["буду звонить", "будешь звонить", "будет звонить", "будем звонить", "будете звонить", "будут звонить"], "imp": ["звони", "звоните"], "note": "Gouverne le datif: звонить кому? Conj. 2e type.", "imp_fr": ["téléphone / appelle", "téléphonez / appelez"], "conj_fr": {"pres": ["téléphone", "téléphones", "téléphone", "téléphonons", "téléphonez", "téléphonent"], "past": ["téléphonait", "téléphonait", "téléphonait", "téléphonaient"], "fut": ["téléphonerrai", "téléphonerras", "téléphonerra", "téléphonerrons", "téléphonerrez", "téléphonerront"]}},
+{"ru": "позвонить", "fr": "téléphoner (pf)", "asp": "pf", "pair": "звонить", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["позвонил", "позвонила", "позвонило", "позвонили"], "fut": ["позвоню", "позвонишь", "позвонит", "позвоним", "позвоните", "позвонят"], "imp": ["позвони", "позвоните"], "note": "Perfectif de звонить.", "imp_fr": ["téléphone / appelle", "téléphonez / appelez"], "conj_fr": {"pres": ["téléphone", "téléphones", "téléphone", "téléphonons", "téléphonez", "téléphonent"], "past": ["a téléphoné", "a téléphoné", "a téléphoné", "ont téléphoné"], "fut": ["téléphonerrai", "téléphonerras", "téléphonerra", "téléphonerrons", "téléphonerrez", "téléphonerront"]}},
+{"ru": "называться", "fr": "s'appeler / se nommer", "asp": "imp", "pair": "", "pres": ["называюсь", "называешься", "называется", "называемся", "называетесь", "называются"], "past": ["назывался", "называлась", "называлось", "назывались"], "fut": ["буду называться", "будешь называться", "будет называться", "будем называться", "будете называться", "будут называться"], "imp": ["называйся", "называйтесь"], "note": "Verbe réfléchi (-ся). \"Как это называется?\" = Comment ça s'appelle?", "imp_fr": ["appelle-toi", "appelez-vous"], "conj_fr": {"pres": ["me appele", "te appeles", "se appele", "nous appelons", "vous appelez", "se appelent"], "past": ["me appelait", "te appelait", "se appelait", "nous appelaient"], "fut": ["me appelerrai", "te appelerras", "se appelerra", "nous appelerrons", "vous appelerrez", "se appelerront"]}},
+{"ru": "рождаться", "fr": "naître", "asp": "imp", "pair": "родиться", "pres": ["рождаюсь", "рождаешься", "рождается", "рождаемся", "рождаетесь", "рождаются"], "past": ["рождался", "рождалась", "рождалось", "рождались"], "fut": ["буду рождаться", "будешь рождаться", "будет рождаться", "будем рождаться", "будете рождаться", "будут рождаться"], "imp": ["рождайся", "рождайтесь"], "note": "Verbe réfléchi. Souvent au passé: \"Я родился/родилась\".", "imp_fr": ["nais", "naissez"], "conj_fr": {"pres": ["nais", "nais", "naît", "naissons", "naissez", "naissent"], "past": ["naissait", "naissait", "naissait", "naissaient"], "fut": ["naîtrai", "naîtras", "naîtra", "naîtrons", "naîtrez", "naîtront"]}},
+{"ru": "родиться", "fr": "naître (pf) / être né", "asp": "pf", "pair": "рождаться", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["родился", "родилась", "родилось", "родились"], "fut": ["рожусь", "родишься", "родится", "родимся", "родитесь", "родятся"], "imp": ["—", "—"], "note": "Très utilisé au passé. Pas d'impératif usuel.", "imp_fr": ["—", "—"], "conj_fr": {"pres": ["nais", "nais", "naît", "naissons", "naissez", "naissent"], "past": ["a né", "a né", "a né", "ont né"], "fut": ["naîtrai", "naîtras", "naîtra", "naîtrons", "naîtrez", "naîtront"]}},
+{"ru": "падать", "fr": "tomber", "asp": "imp", "pair": "упасть", "pres": ["падаю", "падаешь", "падает", "падаем", "падаете", "падают"], "past": ["падал", "падала", "падало", "падали"], "fut": ["буду падать", "будешь падать", "будет падать", "будем падать", "будете падать", "будут падать"], "imp": ["падай", "падайте"], "note": "Conj. 1er type.", "imp_fr": ["tombe", "tombez"], "conj_fr": {"pres": ["tombe", "tombes", "tombe", "tombons", "tombez", "tombent"], "past": ["tombait", "tombait", "tombait", "tombaient"], "fut": ["tomberai", "tomberas", "tombera", "tomberons", "tomberez", "tomberont"]}},
+{"ru": "упасть", "fr": "tomber (pf) / faire une chute", "asp": "pf", "pair": "падать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["упал", "упала", "упало", "упали"], "fut": ["упаду", "упадёшь", "упадёт", "упадём", "упадёте", "упадут"], "imp": ["упади", "упадите"], "note": "Perfectif de падать.", "imp_fr": ["tombe", "tombez"], "conj_fr": {"pres": ["tombe", "tombes", "tombe", "tombons", "tombez", "tombent"], "past": ["a tombé", "a tombé", "a tombé", "ont tombé"], "fut": ["tomberai", "tomberas", "tombera", "tomberons", "tomberez", "tomberont"]}},
+{"ru": "смеяться", "fr": "rire", "asp": "imp", "pair": "", "pres": ["смеюсь", "смеёшься", "смеётся", "смеёмся", "смеётесь", "смеются"], "past": ["смеялся", "смеялась", "смеялось", "смеялись"], "fut": ["буду смеяться", "будешь смеяться", "будет смеяться", "будем смеяться", "будете смеяться", "будут смеяться"], "imp": ["смейся", "смейтесь"], "note": "Verbe réfléchi. Base смей-. Conj. 1er type.", "imp_fr": ["ris", "riez"], "conj_fr": {"pres": ["ris", "ris", "rit", "rions", "riez", "rient"], "past": ["riait", "riait", "riait", "riaient"], "fut": ["rirai", "riras", "rira", "rirons", "rirez", "riront"]}},
+{"ru": "плакать", "fr": "pleurer", "asp": "imp", "pair": "", "pres": ["плачу", "плачешь", "плачет", "плачем", "плачете", "плачут"], "past": ["плакал", "плакала", "плакало", "плакали"], "fut": ["буду плакать", "будешь плакать", "будет плакать", "будем плакать", "будете плакать", "будут плакать"], "imp": ["плачь", "плачьте"], "note": "Alternance к→ч au présent.", "imp_fr": ["pleure", "pleurez"], "conj_fr": {"pres": ["pleure", "pleures", "pleure", "pleurons", "pleurez", "pleurent"], "past": ["pleurait", "pleurait", "pleurait", "pleuraient"], "fut": ["pleurerai", "pleureras", "pleurera", "pleurerons", "pleurerez", "pleureront"]}},
+{"ru": "выбирать", "fr": "choisir", "asp": "imp", "pair": "выбрать", "pres": ["выбираю", "выбираешь", "выбирает", "выбираем", "выбираете", "выбирают"], "past": ["выбирал", "выбирала", "выбирало", "выбирали"], "fut": ["буду выбирать", "будешь выбирать", "будет выбирать", "будем выбирать", "будете выбирать", "будут выбирать"], "imp": ["выбирай", "выбирайте"], "note": "Conj. 1er type.", "imp_fr": ["choisis", "choisissez"], "conj_fr": {"pres": ["choisis", "choisis", "choisit", "choisissons", "choisissez", "choisissent"], "past": ["choisissait", "choisissait", "choisissait", "choisissaient"], "fut": ["choisirai", "choisiras", "choisira", "choisirons", "choisirez", "choisiront"]}},
+{"ru": "выбрать", "fr": "choisir (pf)", "asp": "pf", "pair": "выбирать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["выбрал", "выбрала", "выбрало", "выбрали"], "fut": ["выберу", "выберешь", "выберет", "выберем", "выберете", "выберут"], "imp": ["выбери", "выберите"], "note": "Perfectif de выбирать. Futur: base выбер-.", "imp_fr": ["choisis", "choisissez"], "conj_fr": {"pres": ["choisis", "choisis", "choisit", "choisissons", "choisissez", "choisissent"], "past": ["a choisi", "a choisi", "a choisi", "ont choisi"], "fut": ["choisirai", "choisiras", "choisira", "choisirons", "choisirez", "choisiront"]}},
+{"ru": "забывать", "fr": "oublier", "asp": "imp", "pair": "забыть", "pres": ["забываю", "забываешь", "забывает", "забываем", "забываете", "забывают"], "past": ["забывал", "забывала", "забывало", "забывали"], "fut": ["буду забывать", "будешь забывать", "будет забывать", "будем забывать", "будете забывать", "будут забывать"], "imp": ["забывай", "забывайте"], "note": "Conj. 1er type.", "imp_fr": ["oublie", "oubliez"], "conj_fr": {"pres": ["oublie", "oublies", "oublie", "oublions", "oubliez", "oublient"], "past": ["oubliait", "oubliait", "oubliait", "oubliaient"], "fut": ["oublierrai", "oublierras", "oublierra", "oublierrons", "oublierrez", "oublierront"]}},
+{"ru": "забыть", "fr": "oublier (pf)", "asp": "pf", "pair": "забывать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["забыл", "забыла", "забыло", "забыли"], "fut": ["забуду", "забудешь", "забудет", "забудем", "забудете", "забудут"], "imp": ["забудь", "забудьте"], "note": "Futur: base забуд-.", "imp_fr": ["oublie", "oubliez"], "conj_fr": {"pres": ["oublie", "oublies", "oublie", "oublions", "oubliez", "oublient"], "past": ["a oublié", "a oublié", "a oublié", "ont oublié"], "fut": ["oublierrai", "oublierras", "oublierra", "oublierrons", "oublierrez", "oublierront"]}},
+{"ru": "помнить", "fr": "se souvenir / se rappeler", "asp": "imp", "pair": "", "pres": ["помню", "помнишь", "помнит", "помним", "помните", "помнят"], "past": ["помнил", "помнила", "помнило", "помнили"], "fut": ["буду помнить", "будешь помнить", "будет помнить", "будем помнить", "будете помнить", "будут помнить"], "imp": ["помни", "помните"], "note": "Conj. 2e type. Pas de pf lexical courant (вспомнить = se rappeler soudain).", "imp_fr": ["souviens-toi", "souvenez-vous"], "conj_fr": {"pres": ["me souvenis", "te souvenis", "se souvenit", "nous souvenissons", "vous souvenissez", "se souvenissent"], "past": ["me souvenissait", "te souvenissait", "se souvenissait", "nous souvenissaient"], "fut": ["me souvenirrai", "te souvenirras", "se souvenirra", "nous souvenirrons", "vous souvenirrez", "se souvenirront"]}},
+{"ru": "вставать", "fr": "se lever", "asp": "imp", "pair": "встать", "pres": ["встаю", "встаёшь", "встаёт", "встаём", "встаёте", "встают"], "past": ["вставал", "вставала", "вставало", "вставали"], "fut": ["буду вставать", "будешь вставать", "будет вставать", "будем вставать", "будете вставать", "будут вставать"], "imp": ["вставай", "вставайте"], "note": "Base -ста- + suffixe -вать.", "imp_fr": ["lève-toi", "levez-vous"], "conj_fr": {"pres": ["me leve", "te leves", "se leve", "nous levons", "vous levez", "se levent"], "past": ["me levait", "te levait", "se levait", "nous levaient"], "fut": ["me leverrai", "te leverras", "se leverra", "nous leverrons", "vous leverrez", "se leverront"]}},
+{"ru": "встать", "fr": "se lever (pf)", "asp": "pf", "pair": "вставать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["встал", "встала", "встало", "встали"], "fut": ["встану", "встанешь", "встанет", "встанем", "встанете", "встанут"], "imp": ["встань", "встаньте"], "note": "Futur: base встан-.", "imp_fr": ["lève-toi", "levez-vous"], "conj_fr": {"pres": ["me leve", "te leves", "se leve", "nous levons", "vous levez", "se levent"], "past": ["s'est levé", "s'est levée", "s'est levé", "se sont levés"], "fut": ["me leverrai", "te leverras", "se leverra", "nous leverrons", "vous leverrez", "se leverront"]}},
+{"ru": "садиться", "fr": "s'asseoir", "asp": "imp", "pair": "сесть", "pres": ["сажусь", "садишься", "садится", "садимся", "садитесь", "садятся"], "past": ["садился", "садилась", "садилось", "садились"], "fut": ["буду садиться", "будешь садиться", "будет садиться", "будем садиться", "будете садиться", "будут садиться"], "imp": ["садись", "садитесь"], "note": "Verbe réfléchi. Alternance д→ж à la 1ère pers.", "imp_fr": ["assieds-toi", "asseyez-vous"], "conj_fr": {"pres": ["me asseois", "te asseois", "se asseoit", "nous asseoissons", "vous asseoissez", "se asseoissent"], "past": ["me asseoissait", "te asseoissait", "se asseoissait", "nous asseoissaient"], "fut": ["me asseoirrai", "te asseoirras", "se asseoirra", "nous asseoirrons", "vous asseoirrez", "se asseoirront"]}},
+{"ru": "сесть", "fr": "s'asseoir (pf)", "asp": "pf", "pair": "садиться", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["сел", "села", "село", "сели"], "fut": ["сяду", "сядешь", "сядет", "сядем", "сядете", "сядут"], "imp": ["сядь", "сядьте"], "note": "Futur: base сяд-. Passé court: сел/села.", "imp_fr": ["assieds-toi", "asseyez-vous"], "conj_fr": {"pres": ["me asseois", "te asseois", "se asseoit", "nous asseoissons", "vous asseoissez", "se asseoissent"], "past": ["s'est asseoi", "s'est asseoie", "s'est asseoi", "se sont asseois"], "fut": ["me asseoirrai", "te asseoirras", "se asseoirra", "nous asseoirrons", "vous asseoirrez", "se asseoirront"]}},
+{"ru": "учить", "fr": "apprendre / enseigner", "asp": "imp", "pair": "выучить", "pres": ["учу", "учишь", "учит", "учим", "учите", "учат"], "past": ["учил", "учила", "учило", "учили"], "fut": ["буду учить", "будешь учить", "будет учить", "будем учить", "будете учить", "будут учить"], "imp": ["учи", "учите"], "note": "Conj. 2e type. Учить кого? чему? / Учить наизусть = apprendre par cœur.", "imp_fr": ["apprends", "apprenez"], "conj_fr": {"pres": ["apprends", "apprends", "apprend", "apprenons", "apprenez", "apprennent"], "past": ["apprenait", "apprenait", "apprenait", "apprenaient"], "fut": ["apprendrai", "apprendras", "apprendra", "apprendrons", "apprendrez", "apprendront"]}},
+{"ru": "выучить", "fr": "apprendre (pf) / mémoriser", "asp": "pf", "pair": "учить", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["выучил", "выучила", "выучило", "выучили"], "fut": ["выучу", "выучишь", "выучит", "выучим", "выучите", "выучат"], "imp": ["выучи", "выучите"], "note": "Perfectif de учить (mémoriser).", "imp_fr": ["apprends", "apprenez"], "conj_fr": {"pres": ["apprends", "apprends", "apprend", "apprenons", "apprenez", "apprennent"], "past": ["a appris", "a appris", "a appris", "ont appris"], "fut": ["apprendrai", "apprendras", "apprendra", "apprendrons", "apprendrez", "apprendront"]}},
+{"ru": "учиться", "fr": "étudier / faire des études", "asp": "imp", "pair": "", "pres": ["учусь", "учишься", "учится", "учимся", "учитесь", "учатся"], "past": ["учился", "училась", "училось", "учились"], "fut": ["буду учиться", "будешь учиться", "будет учиться", "будем учиться", "будете учиться", "будут учиться"], "imp": ["учись", "учитесь"], "note": "Réfléchi de учить. Учиться где? чему? Conj. 2e type.", "imp_fr": ["étudie", "étudiez"], "conj_fr": {"pres": ["étudie", "étudies", "étudie", "étudions", "étudiez", "étudient"], "past": ["étudiait", "étudiait", "étudiait", "étudiaient"], "fut": ["étudierrai", "étudierras", "étudierra", "étudierrons", "étudierrez", "étudierront"]}},
+{"ru": "объяснять", "fr": "expliquer", "asp": "imp", "pair": "объяснить", "pres": ["объясняю", "объясняешь", "объясняет", "объясняем", "объясняете", "объясняют"], "past": ["объяснял", "объясняла", "объясняло", "объясняли"], "fut": ["буду объяснять", "будешь объяснять", "будет объяснять", "будем объяснять", "будете объяснять", "будут объяснять"], "imp": ["объясняй", "объясняйте"], "note": "Conj. 1er type.", "imp_fr": ["explique", "expliquez"], "conj_fr": {"pres": ["explique", "expliques", "explique", "expliquons", "expliquez", "expliquent"], "past": ["expliquait", "expliquait", "expliquait", "expliquaient"], "fut": ["expliquerrai", "expliquerras", "expliquerra", "expliquerrons", "expliquerrez", "expliquerront"]}},
+{"ru": "объяснить", "fr": "expliquer (pf)", "asp": "pf", "pair": "объяснять", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["объяснил", "объяснила", "объяснило", "объяснили"], "fut": ["объясню", "объяснишь", "объяснит", "объясним", "объясните", "объяснят"], "imp": ["объясни", "объясните"], "note": "Conj. 2e type.", "imp_fr": ["explique", "expliquez"], "conj_fr": {"pres": ["explique", "expliques", "explique", "expliquons", "expliquez", "expliquent"], "past": ["a expliqué", "a expliqué", "a expliqué", "ont expliqué"], "fut": ["expliquerrai", "expliquerras", "expliquerra", "expliquerrons", "expliquerrez", "expliquerront"]}},
+{"ru": "показывать", "fr": "montrer", "asp": "imp", "pair": "показать", "pres": ["показываю", "показываешь", "показывает", "показываем", "показываете", "показывают"], "past": ["показывал", "показывала", "показывало", "показывали"], "fut": ["буду показывать", "будешь показывать", "будет показывать", "будем показывать", "будете показывать", "будут показывать"], "imp": ["показывай", "показывайте"], "note": "Conj. 1er type.", "imp_fr": ["montre", "montrez"], "conj_fr": {"pres": ["montre", "montres", "montre", "montrons", "montrez", "montrent"], "past": ["montrait", "montrait", "montrait", "montraient"], "fut": ["montrerrai", "montrerras", "montrerra", "montrerrons", "montrerrez", "montrerront"]}},
+{"ru": "показать", "fr": "montrer (pf)", "asp": "pf", "pair": "показывать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["показал", "показала", "показало", "показали"], "fut": ["покажу", "покажешь", "покажет", "покажем", "покажете", "покажут"], "imp": ["покажи", "покажите"], "note": "Alternance з→ж.", "imp_fr": ["montre", "montrez"], "conj_fr": {"pres": ["montre", "montres", "montre", "montrons", "montrez", "montrent"], "past": ["a montré", "a montré", "a montré", "ont montré"], "fut": ["montrerrai", "montrerras", "montrerra", "montrerrons", "montrerrez", "montrerront"]}},
+{"ru": "уходить", "fr": "partir / s'en aller", "asp": "imp", "pair": "уйти", "pres": ["ухожу", "уходишь", "уходит", "уходим", "уходите", "уходят"], "past": ["уходил", "уходила", "уходило", "уходили"], "fut": ["буду уходить", "будешь уходить", "будет уходить", "будем уходить", "будете уходить", "будут уходить"], "imp": ["уходи", "уходите"], "note": "Alternance д→ж. Préfixe у- = éloignement.", "imp_fr": ["pars", "partez"], "conj_fr": {"pres": ["pars", "pars", "part", "partons", "partez", "partent"], "past": ["partait", "partait", "partait", "partaient"], "fut": ["partirai", "partiras", "partira", "partirons", "partirez", "partiront"]}},
+{"ru": "уйти", "fr": "partir (pf) / s'en aller", "asp": "pf", "pair": "уходить", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["ушёл", "ушла", "ушло", "ушли"], "fut": ["уйду", "уйдёшь", "уйдёт", "уйдём", "уйдёте", "уйдут"], "imp": ["уйди", "уйдите"], "note": "Passé irrégulier: ушёл/ушла.", "imp_fr": ["pars", "partez"], "conj_fr": {"pres": ["pars", "pars", "part", "partons", "partez", "partent"], "past": ["a parti", "a parti", "a parti", "ont parti"], "fut": ["partirai", "partiras", "partira", "partirons", "partirez", "partiront"]}},
+{"ru": "приезжать", "fr": "arriver (en véhicule)", "asp": "imp", "pair": "приехать", "pres": ["приезжаю", "приезжаешь", "приезжает", "приезжаем", "приезжаете", "приезжают"], "past": ["приезжал", "приезжала", "приезжало", "приезжали"], "fut": ["буду приезжать", "будешь приезжать", "будет приезжать", "будем приезжать", "будете приезжать", "будут приезжать"], "imp": ["приезжай", "приезжайте"], "note": "Verbe de mouvement indéterminé. Préfixe при- = approche.", "imp_fr": ["arrive", "arrivez"], "conj_fr": {"pres": ["arrive", "arrives", "arrive", "arrivons", "arrivez", "arrivent"], "past": ["arrivait", "arrivait", "arrivait", "arrivaient"], "fut": ["arriverai", "arriveras", "arrivera", "arriverons", "arriverez", "arriveront"]}},
+{"ru": "приехать", "fr": "arriver (pf, en véhicule)", "asp": "pf", "pair": "приезжать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["приехал", "приехала", "приехало", "приехали"], "fut": ["приеду", "приедешь", "приедет", "приедем", "приедете", "приедут"], "imp": ["приезжай", "приезжайте"], "note": "Futur: base приед-.", "imp_fr": ["arrive", "arrivez"], "conj_fr": {"pres": ["arrive", "arrives", "arrive", "arrivons", "arrivez", "arrivent"], "past": ["a arrivé", "a arrivé", "a arrivé", "ont arrivé"], "fut": ["arriverai", "arriveras", "arrivera", "arriverons", "arriverez", "arriveront"]}},
+{"ru": "уезжать", "fr": "partir (en véhicule)", "asp": "imp", "pair": "уехать", "pres": ["уезжаю", "уезжаешь", "уезжает", "уезжаем", "уезжаете", "уезжают"], "past": ["уезжал", "уезжала", "уезжало", "уезжали"], "fut": ["буду уезжать", "будешь уезжать", "будет уезжать", "будем уезжать", "будете уезжать", "будут уезжать"], "imp": ["уезжай", "уезжайте"], "note": "Préfixe у- = éloignement. Mouvement en véhicule.", "imp_fr": ["pars", "partez"], "conj_fr": {"pres": ["pars", "pars", "part", "partons", "partez", "partent"], "past": ["partait", "partait", "partait", "partaient"], "fut": ["partirai", "partiras", "partira", "partirons", "partirez", "partiront"]}},
+{"ru": "уехать", "fr": "partir (pf, en véhicule)", "asp": "pf", "pair": "уезжать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["уехал", "уехала", "уехало", "уехали"], "fut": ["уеду", "уедешь", "уедет", "уедем", "уедете", "уедут"], "imp": ["уезжай", "уезжайте"], "note": "Perfectif de уезжать.", "imp_fr": ["pars", "partez"], "conj_fr": {"pres": ["pars", "pars", "part", "partons", "partez", "partent"], "past": ["a parti", "a parti", "a parti", "ont parti"], "fut": ["partirai", "partiras", "partira", "partirons", "partirez", "partiront"]}},
+{"ru": "ехать", "fr": "aller (en véhicule, mouvement direct)", "asp": "imp", "pair": "поехать", "pres": ["еду", "едешь", "едет", "едем", "едете", "едут"], "past": ["ехал", "ехала", "ехало", "ехали"], "fut": ["буду ехать", "будешь ехать", "будет ехать", "будем ехать", "будете ехать", "будут ехать"], "imp": ["езжай", "езжайте"], "note": "Verbe de mouvement déterminé en véhicule. Base ед- au présent.", "imp_fr": ["roule / pars", "roulez / partez"], "conj_fr": {"pres": ["vais", "vas", "va", "allons", "allez", "vont"], "past": ["allait", "allait", "allait", "allaient"], "fut": ["irai", "iras", "ira", "irons", "irez", "iront"]}},
+{"ru": "поехать", "fr": "partir / aller (pf, en véhicule)", "asp": "pf", "pair": "ехать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["поехал", "поехала", "поехало", "поехали"], "fut": ["поеду", "поедешь", "поедет", "поедем", "поедете", "поедут"], "imp": ["поезжай", "поезжайте"], "note": "Perfectif de ехать. \"Поехали!\" = Allons-y!", "imp_fr": ["pars", "partez"], "conj_fr": {"pres": ["pars", "pars", "part", "partons", "partez", "partent"], "past": ["a parti", "a parti", "a parti", "ont parti"], "fut": ["partirai", "partiras", "partira", "partirons", "partirez", "partiront"]}},
+{"ru": "бежать", "fr": "courir (mouvement direct)", "asp": "imp", "pair": "", "pres": ["бегу", "бежишь", "бежит", "бежим", "бежите", "бегут"], "past": ["бежал", "бежала", "бежало", "бежали"], "fut": ["буду бежать", "будешь бежать", "будет бежать", "будем бежать", "будете бежать", "будут бежать"], "imp": ["беги", "бегите"], "note": "Hétéroclite: 1ère/6ème conj. type 1, autres type 2.", "imp_fr": ["cours", "courez"], "conj_fr": {"pres": ["cours", "cours", "court", "courons", "courez", "courent"], "past": ["courait", "courait", "courait", "couraient"], "fut": ["courrai", "courras", "courra", "courrons", "courrez", "courront"]}},
+{"ru": "лететь", "fr": "voler (mouvement direct)", "asp": "imp", "pair": "", "pres": ["лечу", "летишь", "летит", "летим", "летите", "летят"], "past": ["летел", "летела", "летело", "летели"], "fut": ["буду лететь", "будешь лететь", "будет лететь", "будем лететь", "будете лететь", "будут лететь"], "imp": ["лети", "летите"], "note": "Verbe de mouvement déterminé. Alternance т→ч à la 1ère pers.", "imp_fr": ["vole", "volez"], "conj_fr": {"pres": ["vole", "voles", "vole", "volons", "volez", "volent"], "past": ["volait", "volait", "volait", "volaient"], "fut": ["volerrai", "volerras", "volerra", "volerrons", "volerrez", "volerront"]}},
+{"ru": "нести", "fr": "porter (à la main, mouvement direct)", "asp": "imp", "pair": "принести", "pres": ["несу", "несёшь", "несёт", "несём", "несёте", "несут"], "past": ["нёс", "несла", "несло", "несли"], "fut": ["буду нести", "будешь нести", "будет нести", "будем нести", "будете нести", "будут нести"], "imp": ["неси", "несите"], "note": "Passé masc. irrégulier: нёс (pas нёсл).", "imp_fr": ["porte", "portez"], "conj_fr": {"pres": ["porte", "portes", "porte", "portons", "portez", "portent"], "past": ["portait", "portait", "portait", "portaient"], "fut": ["porterrai", "porterras", "porterra", "porterrons", "porterrez", "porterront"]}},
+{"ru": "принести", "fr": "apporter (pf)", "asp": "pf", "pair": "нести", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["принёс", "принесла", "принесло", "принесли"], "fut": ["принесу", "принесёшь", "принесёт", "принесём", "принесёте", "принесут"], "imp": ["принеси", "принесите"], "note": "Perfectif préfixé de нести.", "imp_fr": ["apporte", "apportez"], "conj_fr": {"pres": ["apporte", "apportes", "apporte", "apportons", "apportez", "apportent"], "past": ["a apporté", "a apporté", "a apporté", "ont apporté"], "fut": ["apporterrai", "apporterras", "apporterra", "apporterrons", "apporterrez", "apporterront"]}},
+{"ru": "вести", "fr": "conduire / guider (mouvement direct)", "asp": "imp", "pair": "", "pres": ["веду", "ведёшь", "ведёт", "ведём", "ведёте", "ведут"], "past": ["вёл", "вела", "вело", "вели"], "fut": ["буду вести", "будешь вести", "будет вести", "будем вести", "будете вести", "будут вести"], "imp": ["веди", "ведите"], "note": "Passé masc. irrégulier: вёл. Verbe de mouvement déterminé.", "imp_fr": ["conduis / guide", "conduisez / guidez"], "conj_fr": {"pres": ["conduis", "conduis", "conduit", "conduisons", "conduisez", "conduisent"], "past": ["conduisait", "conduisait", "conduisait", "conduisaient"], "fut": ["conduirai", "conduiras", "conduira", "conduirons", "conduirez", "conduiront"]}},
+{"ru": "спать", "fr": "dormir", "asp": "imp", "pair": "", "pres": ["сплю", "спишь", "спит", "спим", "спите", "спят"], "past": ["спал", "спала", "спало", "спали"], "fut": ["буду спать", "будешь спать", "будет спать", "будем спать", "будете спать", "будут спать"], "imp": ["спи", "спите"], "note": "Base спл- à la 1ère pers. Conj. 2e type.", "imp_fr": ["dors", "dormez"], "conj_fr": {"pres": ["dors", "dors", "dort", "dormons", "dormez", "dorment"], "past": ["dormait", "dormait", "dormait", "dormaient"], "fut": ["dormirai", "dormiras", "dormira", "dormirons", "dormirez", "dormiront"]}},
+{"ru": "просыпаться", "fr": "se réveiller", "asp": "imp", "pair": "проснуться", "pres": ["просыпаюсь", "просыпаешься", "просыпается", "просыпаемся", "просыпаетесь", "просыпаются"], "past": ["просыпался", "просыпалась", "просыпалось", "просыпались"], "fut": ["буду просыпаться", "будешь просыпаться", "будет просыпаться", "будем просыпаться", "будете просыпаться", "будут просыпаться"], "imp": ["просыпайся", "просыпайтесь"], "note": "Verbe réfléchi. Conj. 1er type.", "imp_fr": ["réveille-toi", "réveillez-vous"], "conj_fr": {"pres": ["me réveille", "te réveilles", "se réveille", "nous réveillons", "vous réveillez", "se réveillent"], "past": ["me réveillait", "te réveillait", "se réveillait", "nous réveillaient"], "fut": ["me réveillerrai", "te réveillerras", "se réveillerra", "nous réveillerrons", "vous réveillerrez", "se réveillerront"]}},
+{"ru": "проснуться", "fr": "se réveiller (pf)", "asp": "pf", "pair": "просыпаться", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["проснулся", "проснулась", "проснулось", "проснулись"], "fut": ["проснусь", "проснёшься", "проснётся", "проснёмся", "проснётесь", "проснутся"], "imp": ["проснись", "проснитесь"], "note": "Perfectif de просыпаться.", "imp_fr": ["réveille-toi", "réveillez-vous"], "conj_fr": {"pres": ["me réveille", "te réveilles", "se réveille", "nous réveillons", "vous réveillez", "se réveillent"], "past": ["s'est réveillé", "s'est réveillée", "s'est réveillé", "se sont réveillés"], "fut": ["me réveillerrai", "te réveillerras", "se réveillerra", "nous réveillerrons", "vous réveillerrez", "se réveillerront"]}},
+{"ru": "мыться", "fr": "se laver", "asp": "imp", "pair": "", "pres": ["моюсь", "моешься", "моется", "моемся", "моетесь", "моются"], "past": ["мылся", "мылась", "мылось", "мылись"], "fut": ["буду мыться", "будешь мыться", "будет мыться", "будем мыться", "будете мыться", "будут мыться"], "imp": ["мойся", "мойтесь"], "note": "Verbe réfléchi. Base мо- au présent.", "imp_fr": ["lave-toi", "lavez-vous"], "conj_fr": {"pres": ["me lave", "te laves", "se lave", "nous lavons", "vous lavez", "se lavent"], "past": ["me lavait", "te lavait", "se lavait", "nous lavaient"], "fut": ["me laverrai", "te laverras", "se laverra", "nous laverrons", "vous laverrez", "se laverront"]}},
+{"ru": "одеваться", "fr": "s'habiller", "asp": "imp", "pair": "одеться", "pres": ["одеваюсь", "одеваешься", "одевается", "одеваемся", "одеваетесь", "одеваются"], "past": ["одевался", "одевалась", "одевалось", "одевались"], "fut": ["буду одеваться", "будешь одеваться", "будет одеваться", "будем одеваться", "будете одеваться", "будут одеваться"], "imp": ["одевайся", "одевайтесь"], "note": "Verbe réfléchi. Conj. 1er type.", "imp_fr": ["habille-toi", "habillez-vous"], "conj_fr": {"pres": ["me habille", "te habilles", "se habille", "nous habillons", "vous habillez", "se habillent"], "past": ["me habillait", "te habillait", "se habillait", "nous habillaient"], "fut": ["me habillerrai", "te habillerras", "se habillerra", "nous habillerrons", "vous habillerrez", "se habillerront"]}},
+{"ru": "одеться", "fr": "s'habiller (pf)", "asp": "pf", "pair": "одеваться", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["оделся", "оделась", "оделось", "оделись"], "fut": ["оденусь", "оденешься", "оденется", "оденемся", "оденетесь", "оденутся"], "imp": ["оденься", "оденьтесь"], "note": "Perfectif de одеваться.", "imp_fr": ["habille-toi", "habillez-vous"], "conj_fr": {"pres": ["me habille", "te habilles", "se habille", "nous habillons", "vous habillez", "se habillent"], "past": ["s'est habillé", "s'est habillée", "s'est habillé", "se sont habillés"], "fut": ["me habillerrai", "te habillerras", "se habillerra", "nous habillerrons", "vous habillerrez", "se habillerront"]}},
+{"ru": "прощать", "fr": "pardonner", "asp": "imp", "pair": "простить", "pres": ["прощаю", "прощаешь", "прощает", "прощаем", "прощаете", "прощают"], "past": ["прощал", "прощала", "прощало", "прощали"], "fut": ["буду прощать", "будешь прощать", "будет прощать", "будем прощать", "будете прощать", "будут прощать"], "imp": ["прощай", "прощайте"], "note": "\"Прощай/Прощайте\" = Adieu (au revoir définitif).", "imp_fr": ["pardonne", "pardonnez"], "conj_fr": {"pres": ["pardonne", "pardonnes", "pardonne", "pardonnons", "pardonnez", "pardonnent"], "past": ["pardonnait", "pardonnait", "pardonnait", "pardonnaient"], "fut": ["pardonnerrai", "pardonnerras", "pardonnerra", "pardonnerrons", "pardonnerrez", "pardonnerront"]}},
+{"ru": "простить", "fr": "pardonner (pf)", "asp": "pf", "pair": "прощать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["простил", "простила", "простило", "простили"], "fut": ["прощу", "простишь", "простит", "простим", "простите", "простят"], "imp": ["прости", "простите"], "note": "\"Прости/Простите\" = Excuse-moi/Excusez-moi.", "imp_fr": ["pardonne", "pardonnez"], "conj_fr": {"pres": ["pardonne", "pardonnes", "pardonne", "pardonnons", "pardonnez", "pardonnent"], "past": ["a pardonné", "a pardonné", "a pardonné", "ont pardonné"], "fut": ["pardonnerrai", "pardonnerras", "pardonnerra", "pardonnerrons", "pardonnerrez", "pardonnerront"]}},
+{"ru": "получать", "fr": "recevoir / obtenir", "asp": "imp", "pair": "получить", "pres": ["получаю", "получаешь", "получает", "получаем", "получаете", "получают"], "past": ["получал", "получала", "получало", "получали"], "fut": ["буду получать", "будешь получать", "будет получать", "будем получать", "будете получать", "будут получать"], "imp": ["получай", "получайте"], "note": "Conj. 1er type.", "imp_fr": ["reçois", "recevez"], "conj_fr": {"pres": ["reçois", "reçois", "reçoit", "recevons", "recevez", "reçoivent"], "past": ["recevait", "recevait", "recevait", "recevaient"], "fut": ["recevrai", "recevras", "recevra", "recevrons", "recevrez", "recevront"]}},
+{"ru": "получить", "fr": "recevoir (pf) / obtenir", "asp": "pf", "pair": "получать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["получил", "получила", "получило", "получили"], "fut": ["получу", "получишь", "получит", "получим", "получите", "получат"], "imp": ["получи", "получите"], "note": "Conj. 2e type.", "imp_fr": ["reçois", "recevez"], "conj_fr": {"pres": ["reçois", "reçois", "reçoit", "recevons", "recevez", "reçoivent"], "past": ["a reçu", "a reçu", "a reçu", "ont reçu"], "fut": ["recevrai", "recevras", "recevra", "recevrons", "recevrez", "recevront"]}},
+{"ru": "посылать", "fr": "envoyer", "asp": "imp", "pair": "послать", "pres": ["посылаю", "посылаешь", "посылает", "посылаем", "посылаете", "посылают"], "past": ["посылал", "посылала", "посылало", "посылали"], "fut": ["буду посылать", "будешь посылать", "будет посылать", "будем посылать", "будете посылать", "будут посылать"], "imp": ["посылай", "посылайте"], "note": "Conj. 1er type.", "imp_fr": ["envoie", "envoyez"], "conj_fr": {"pres": ["envoie", "envoies", "envoie", "envoyons", "envoyez", "envoient"], "past": ["envoyait", "envoyait", "envoyait", "envoyaient"], "fut": ["enverrai", "enverras", "enverra", "enverrons", "enverrez", "enverront"]}},
+{"ru": "послать", "fr": "envoyer (pf)", "asp": "pf", "pair": "посылать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["послал", "послала", "послало", "послали"], "fut": ["пошлю", "пошлёшь", "пошлёт", "пошлём", "пошлёте", "пошлют"], "imp": ["пошли", "пошлите"], "note": "Futur irrégulier: base пошл-.", "imp_fr": ["envoie", "envoyez"], "conj_fr": {"pres": ["envoie", "envoies", "envoie", "envoyons", "envoyez", "envoient"], "past": ["a envoyé", "a envoyé", "a envoyé", "ont envoyé"], "fut": ["enverrai", "enverras", "enverra", "enverrons", "enverrez", "enverront"]}},
+{"ru": "строить", "fr": "construire", "asp": "imp", "pair": "построить", "pres": ["строю", "строишь", "строит", "строим", "строите", "строят"], "past": ["строил", "строила", "строило", "строили"], "fut": ["буду строить", "будешь строить", "будет строить", "будем строить", "будете строить", "будут строить"], "imp": ["строй", "стройте"], "note": "Conj. 2e type. Alternance й au présent.", "imp_fr": ["construis", "construisez"], "conj_fr": {"pres": ["construis", "construis", "construit", "construisons", "construisez", "construisent"], "past": ["construisait", "construisait", "construisait", "construisaient"], "fut": ["construirai", "construiras", "construira", "construirons", "construirez", "construiront"]}},
+{"ru": "построить", "fr": "construire (pf) / bâtir", "asp": "pf", "pair": "строить", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["построил", "построила", "построило", "построили"], "fut": ["построю", "построишь", "построит", "построим", "построите", "построят"], "imp": ["построй", "постройте"], "note": "Perfectif de строить.", "imp_fr": ["construis", "construisez"], "conj_fr": {"pres": ["construis", "construis", "construit", "construisons", "construisez", "construisent"], "past": ["a construit", "a construit", "a construit", "ont construit"], "fut": ["construirai", "construiras", "construira", "construirons", "construirez", "construiront"]}},
+{"ru": "решать", "fr": "décider / résoudre", "asp": "imp", "pair": "решить", "pres": ["решаю", "решаешь", "решает", "решаем", "решаете", "решают"], "past": ["решал", "решала", "решало", "решали"], "fut": ["буду решать", "будешь решать", "будет решать", "будем решать", "будете решать", "будут решать"], "imp": ["решай", "решайте"], "note": "Conj. 1er type.", "imp_fr": ["décide / résous", "décidez / résolvez"], "conj_fr": {"pres": ["décide", "décides", "décide", "décidons", "décidez", "décident"], "past": ["décidait", "décidait", "décidait", "décidaient"], "fut": ["déciderrai", "déciderras", "déciderra", "déciderrons", "déciderrez", "déciderront"]}},
+{"ru": "решить", "fr": "décider (pf) / résoudre", "asp": "pf", "pair": "решать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["решил", "решила", "решило", "решили"], "fut": ["решу", "решишь", "решит", "решим", "решите", "решат"], "imp": ["реши", "решите"], "note": "Conj. 2e type.", "imp_fr": ["décide", "décidez"], "conj_fr": {"pres": ["décide", "décides", "décide", "décidons", "décidez", "décident"], "past": ["a décidé", "a décidé", "a décidé", "ont décidé"], "fut": ["déciderrai", "déciderras", "déciderra", "déciderrons", "déciderrez", "déciderront"]}},
+{"ru": "пытаться", "fr": "essayer / tenter", "asp": "imp", "pair": "попытаться", "pres": ["пытаюсь", "пытаешься", "пытается", "пытаемся", "пытаетесь", "пытаются"], "past": ["пытался", "пыталась", "пыталось", "пытались"], "fut": ["буду пытаться", "будешь пытаться", "будет пытаться", "будем пытаться", "будете пытаться", "будут пытаться"], "imp": ["пытайся", "пытайтесь"], "note": "Verbe réfléchi. Conj. 1er type.", "imp_fr": ["essaie", "essayez"], "conj_fr": {"pres": ["essaye", "essayes", "essaye", "essayons", "essayez", "essayent"], "past": ["essayait", "essayait", "essayait", "essayaient"], "fut": ["essayerrai", "essayerras", "essayerra", "essayerrons", "essayerrez", "essayerront"]}},
+{"ru": "попытаться", "fr": "essayer (pf) / tenter", "asp": "pf", "pair": "пытаться", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["попытался", "попыталась", "попыталось", "попытались"], "fut": ["попытаюсь", "попытаешься", "попытается", "попытаемся", "попытаетесь", "попытаются"], "imp": ["попытайся", "попытайтесь"], "note": "Perfectif de пытаться.", "imp_fr": ["essaie", "essayez"], "conj_fr": {"pres": ["essaye", "essayes", "essaye", "essayons", "essayez", "essayent"], "past": ["a essayé", "a essayé", "a essayé", "ont essayé"], "fut": ["essayerrai", "essayerras", "essayerra", "essayerrons", "essayerrez", "essayerront"]}},
+{"ru": "менять", "fr": "changer / échanger", "asp": "imp", "pair": "", "pres": ["меняю", "меняешь", "меняет", "меняем", "меняете", "меняют"], "past": ["менял", "меняла", "меняло", "меняли"], "fut": ["буду менять", "будешь менять", "будет менять", "будем менять", "будете менять", "будут менять"], "imp": ["меняй", "меняйте"], "note": "Conj. 1er type.", "imp_fr": ["change", "changez"], "conj_fr": {"pres": ["change", "changes", "change", "changeons", "changeez", "changent"], "past": ["changait", "changait", "changait", "changaient"], "fut": ["changerrai", "changerras", "changerra", "changerrons", "changerrez", "changerront"]}},
+{"ru": "продолжать", "fr": "continuer", "asp": "imp", "pair": "", "pres": ["продолжаю", "продолжаешь", "продолжает", "продолжаем", "продолжаете", "продолжают"], "past": ["продолжал", "продолжала", "продолжало", "продолжали"], "fut": ["буду продолжать", "будешь продолжать", "будет продолжать", "будем продолжать", "будете продолжать", "будут продолжать"], "imp": ["продолжай", "продолжайте"], "note": "Conj. 1er type.", "imp_fr": ["continue", "continuez"], "conj_fr": {"pres": ["continue", "continues", "continue", "continuons", "continuez", "continuent"], "past": ["continuait", "continuait", "continuait", "continuaient"], "fut": ["continuerrai", "continuerras", "continuerra", "continuerrons", "continuerrez", "continuerront"]}},
+{"ru": "использовать", "fr": "utiliser / employer", "asp": "biasp", "pair": "", "pres": ["использую", "используешь", "использует", "используем", "используете", "используют"], "past": ["использовал", "использовала", "использовало", "использовали"], "fut": ["буду использовать", "будешь использовать", "будет использовать", "будем использовать", "будете использовать", "будут использовать"], "imp": ["используй", "используйте"], "note": "Verbe biaspectuel: peut être imp. ou pf selon contexte.", "imp_fr": ["utilise", "utilisez"], "conj_fr": {"pres": ["utilise", "utilises", "utilise", "utilisons", "utilisez", "utilisent"], "past": ["utilisait", "utilisait", "utilisait", "utilisaient"], "fut": ["utiliserrai", "utiliserras", "utiliserra", "utiliserrons", "utiliserrez", "utiliserront"]}},
+{"ru": "казаться", "fr": "sembler / paraître", "asp": "imp", "pair": "", "pres": ["кажусь", "кажешься", "кажется", "кажемся", "кажетесь", "кажутся"], "past": ["казался", "казалась", "казалось", "казались"], "fut": ["буду казаться", "будешь казаться", "будет казаться", "будем казаться", "будете казаться", "будут казаться"], "imp": ["—", "—"], "note": "\"Мне кажется\" = Il me semble. Alternance з→ж.", "imp_fr": ["—", "—"], "conj_fr": {"pres": ["semble", "sembles", "semble", "semblons", "semblez", "semblent"], "past": ["semblait", "semblait", "semblait", "semblaient"], "fut": ["semblerrai", "semblerras", "semblerra", "semblerrons", "semblerrez", "semblerront"]}},
+{"ru": "становиться", "fr": "devenir", "asp": "imp", "pair": "стать", "pres": ["становлюсь", "становишься", "становится", "становимся", "становитесь", "становятся"], "past": ["становился", "становилась", "становилось", "становились"], "fut": ["буду становиться", "будешь становиться", "будет становиться", "будем становиться", "будете становиться", "будут становиться"], "imp": ["становись", "становитесь"], "note": "Verbe réfléchi. Alternance в→вл à la 1ère pers.", "imp_fr": ["deviens", "devenez"], "conj_fr": {"pres": ["deviens", "deviens", "devient", "devenons", "devenez", "deviennent"], "past": ["devenait", "devenait", "devenait", "devenaient"], "fut": ["deviendrai", "deviendras", "deviendra", "deviendrons", "deviendrez", "deviendront"]}},
+{"ru": "стать", "fr": "devenir (pf) / commencer à", "asp": "pf", "pair": "становиться", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["стал", "стала", "стало", "стали"], "fut": ["стану", "станешь", "станет", "станем", "станете", "станут"], "imp": ["стань", "станьте"], "note": "Perfectif de становиться. \"Стать + inf.\" = se mettre à.", "imp_fr": ["deviens", "devenez"], "conj_fr": {"pres": ["deviens", "deviens", "devient", "devenons", "devenez", "deviennent"], "past": ["a devenu", "a devenu", "a devenu", "ont devenu"], "fut": ["deviendrai", "deviendras", "deviendra", "deviendrons", "deviendrez", "deviendront"]}},
+{"ru": "оставаться", "fr": "rester", "asp": "imp", "pair": "остаться", "pres": ["остаюсь", "остаёшься", "остаётся", "остаёмся", "остаётесь", "остаются"], "past": ["оставался", "оставалась", "оставалось", "оставались"], "fut": ["буду оставаться", "будешь оставаться", "будет оставаться", "будем оставаться", "будете оставаться", "будут оставаться"], "imp": ["оставайся", "оставайтесь"], "note": "Verbe réfléchi. Base -ста- + suffixe -вать.", "imp_fr": ["reste", "restez"], "conj_fr": {"pres": ["reste", "restes", "reste", "restons", "restez", "restent"], "past": ["restait", "restait", "restait", "restaient"], "fut": ["resterai", "resteras", "restera", "resterons", "resterez", "resteront"]}},
+{"ru": "остаться", "fr": "rester (pf)", "asp": "pf", "pair": "оставаться", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["остался", "осталась", "осталось", "остались"], "fut": ["останусь", "останешься", "останется", "останемся", "останетесь", "останутся"], "imp": ["останься", "останьтесь"], "note": "Perfectif de оставаться.", "imp_fr": ["reste", "restez"], "conj_fr": {"pres": ["reste", "restes", "reste", "restons", "restez", "restent"], "past": ["a resté", "a resté", "a resté", "ont resté"], "fut": ["resterai", "resteras", "restera", "resterons", "resterez", "resteront"]}},
+{"ru": "оставлять", "fr": "laisser / abandonner", "asp": "imp", "pair": "оставить", "pres": ["оставляю", "оставляешь", "оставляет", "оставляем", "оставляете", "оставляют"], "past": ["оставлял", "оставляла", "оставляло", "оставляли"], "fut": ["буду оставлять", "будешь оставлять", "будет оставлять", "будем оставлять", "будете оставлять", "будут оставлять"], "imp": ["оставляй", "оставляйте"], "note": "Conj. 1er type.", "imp_fr": ["laisse", "laissez"], "conj_fr": {"pres": ["laisse", "laisses", "laisse", "laissons", "laissez", "laissent"], "past": ["laissait", "laissait", "laissait", "laissaient"], "fut": ["laisserrai", "laisserras", "laisserra", "laisserrons", "laisserrez", "laisserront"]}},
+{"ru": "оставить", "fr": "laisser (pf)", "asp": "pf", "pair": "оставлять", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["оставил", "оставила", "оставило", "оставили"], "fut": ["оставлю", "оставишь", "оставит", "оставим", "оставите", "оставят"], "imp": ["оставь", "оставьте"], "note": "Alternance в→вл à la 1ère pers.", "imp_fr": ["laisse", "laissez"], "conj_fr": {"pres": ["laisse", "laisses", "laisse", "laissons", "laissez", "laissent"], "past": ["a laissé", "a laissé", "a laissé", "ont laissé"], "fut": ["laisserrai", "laisserras", "laisserra", "laisserrons", "laisserrez", "laisserront"]}},
+{"ru": "водить", "fr": "conduire (habituellement)", "asp": "imp", "pair": "", "pres": ["вожу", "водишь", "водит", "водим", "водите", "водят"], "past": ["водил", "водила", "водило", "водили"], "fut": ["буду водить", "будешь водить", "будет водить", "будем водить", "будете водить", "будут водить"], "imp": ["води", "водите"], "note": "Alternance д→ж. Verbe de mouvement indéterminé.", "imp_fr": ["conduis", "conduisez"], "conj_fr": {"pres": ["conduis", "conduis", "conduit", "conduisons", "conduisez", "conduisent"], "past": ["conduisait", "conduisait", "conduisait", "conduisaient"], "fut": ["conduirai", "conduiras", "conduira", "conduirons", "conduirez", "conduiront"]}},
+{"ru": "вспоминать", "fr": "se rappeler / se souvenir", "asp": "imp", "pair": "вспомнить", "pres": ["вспоминаю", "вспоминаешь", "вспоминает", "вспоминаем", "вспоминаете", "вспоминают"], "past": ["вспоминал", "вспоминала", "вспоминало", "вспоминали"], "fut": ["буду вспоминать", "будешь вспоминать", "будет вспоминать", "будем вспоминать", "будете вспоминать", "будут вспоминать"], "imp": ["вспоминай", "вспоминайте"], "note": "Conj. 1er type.", "imp_fr": ["souviens-toi", "souvenez-vous"], "conj_fr": {"pres": ["me rappele", "te rappeles", "se rappele", "nous rappelons", "vous rappelez", "se rappelent"], "past": ["me rappelait", "te rappelait", "se rappelait", "nous rappelaient"], "fut": ["me rappelerrai", "te rappelerras", "se rappelerra", "nous rappelerrons", "vous rappelerrez", "se rappelerront"]}},
+{"ru": "вспомнить", "fr": "se rappeler soudain (pf)", "asp": "pf", "pair": "вспоминать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["вспомнил", "вспомнила", "вспомнило", "вспомнили"], "fut": ["вспомню", "вспомнишь", "вспомнит", "вспомним", "вспомните", "вспомнят"], "imp": ["вспомни", "вспомните"], "note": "Perfectif de вспоминать.", "imp_fr": ["souviens-toi", "souvenez-vous"], "conj_fr": {"pres": ["me rappeler soudain", "te rappeler soudain", "se rappeler soudain", "nous rappeler soudain", "vous rappeler soudain", "se rappeler soudain"], "past": ["s'est rappeler soudain", "s'est rappeler soudaine", "s'est rappeler soudain", "se sont rappeler soudains"], "fut": ["me rappeler soudain", "te rappeler soudain", "se rappeler soudain", "nous rappeler soudain", "vous rappeler soudain", "se rappeler soudain"]}},
+{"ru": "готовить", "fr": "préparer / cuisiner", "asp": "imp", "pair": "приготовить", "pres": ["готовлю", "готовишь", "готовит", "готовим", "готовите", "готовят"], "past": ["готовил", "готовила", "готовило", "готовили"], "fut": ["буду готовить", "будешь готовить", "будет готовить", "будем готовить", "будете готовить", "будут готовить"], "imp": ["готовь", "готовьте"], "note": "Alternance в→вл à la 1ère pers.", "imp_fr": ["prépare / cuisine", "préparez / cuisinez"], "conj_fr": {"pres": ["prépare", "prépares", "prépare", "préparons", "préparez", "préparent"], "past": ["préparait", "préparait", "préparait", "préparaient"], "fut": ["préparerrai", "préparerras", "préparerra", "préparerrons", "préparerrez", "préparerront"]}},
+{"ru": "приготовить", "fr": "préparer (pf) / cuisiner", "asp": "pf", "pair": "готовить", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["приготовил", "приготовила", "приготовило", "приготовили"], "fut": ["приготовлю", "приготовишь", "приготовит", "приготовим", "приготовите", "приготовят"], "imp": ["приготовь", "приготовьте"], "note": "Perfectif de готовить.", "imp_fr": ["prépare", "préparez"], "conj_fr": {"pres": ["prépare", "prépares", "prépare", "préparons", "préparez", "préparent"], "past": ["a préparé", "a préparé", "a préparé", "ont préparé"], "fut": ["préparerrai", "préparerras", "préparerra", "préparerrons", "préparerrez", "préparerront"]}},
+{"ru": "предлагать", "fr": "proposer / offrir", "asp": "imp", "pair": "предложить", "pres": ["предлагаю", "предлагаешь", "предлагает", "предлагаем", "предлагаете", "предлагают"], "past": ["предлагал", "предлагала", "предлагало", "предлагали"], "fut": ["буду предлагать", "будешь предлагать", "будет предлагать", "будем предлагать", "будете предлагать", "будут предлагать"], "imp": ["предлагай", "предлагайте"], "note": "Conj. 1er type.", "imp_fr": ["propose / offre", "proposez / offrez"], "conj_fr": {"pres": ["propose", "proposes", "propose", "proposons", "proposez", "proposent"], "past": ["proposait", "proposait", "proposait", "proposaient"], "fut": ["proposerrai", "proposerras", "proposerra", "proposerrons", "proposerrez", "proposerront"]}},
+{"ru": "предложить", "fr": "proposer (pf)", "asp": "pf", "pair": "предлагать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["предложил", "предложила", "предложило", "предложили"], "fut": ["предложу", "предложишь", "предложит", "предложим", "предложите", "предложат"], "imp": ["предложи", "предложите"], "note": "Alternance г→ж.", "imp_fr": ["propose", "proposez"], "conj_fr": {"pres": ["propose", "proposes", "propose", "proposons", "proposez", "proposent"], "past": ["a proposé", "a proposé", "a proposé", "ont proposé"], "fut": ["proposerrai", "proposerras", "proposerra", "proposerrons", "proposerrez", "proposerront"]}},
+{"ru": "носить", "fr": "porter (vêtement / habituellement)", "asp": "imp", "pair": "", "pres": ["ношу", "носишь", "носит", "носим", "носите", "носят"], "past": ["носил", "носила", "носило", "носили"], "fut": ["буду носить", "будешь носить", "будет носить", "будем носить", "будете носить", "будут носить"], "imp": ["носи", "носите"], "note": "Alternance с→ш à la 1ère pers. Verbe de mouvement indéterminé.", "imp_fr": ["porte", "portez"], "conj_fr": {"pres": ["porter (vêtement", "porter (vêtement", "porter (vêtement", "porter (vêtement", "porter (vêtement", "porter (vêtement"], "past": ["porter (vêtement", "porter (vêtement", "porter (vêtement", "porter (vêtement"], "fut": ["porter (vêtement", "porter (vêtement", "porter (vêtement", "porter (vêtement", "porter (vêtement", "porter (vêtement"]}},
+{"ru": "держать", "fr": "tenir / garder", "asp": "imp", "pair": "", "pres": ["держу", "держишь", "держит", "держим", "держите", "держат"], "past": ["держал", "держала", "держало", "держали"], "fut": ["буду держать", "будешь держать", "будет держать", "будем держать", "будете держать", "будут держать"], "imp": ["держи", "держите"], "note": "Conj. 2e type. Alternance ж→ж (stable).", "imp_fr": ["tiens", "tenez"], "conj_fr": {"pres": ["tiens", "tiens", "tient", "tenons", "tenez", "tiennent"], "past": ["tenait", "tenait", "tenait", "tenaient"], "fut": ["tiendrai", "tiendras", "tiendra", "tiendrons", "tiendrez", "tiendront"]}},
+{"ru": "уметь", "fr": "savoir faire / être capable de", "asp": "imp", "pair": "", "pres": ["умею", "умеешь", "умеет", "умеем", "умеете", "умеют"], "past": ["умел", "умела", "умело", "умели"], "fut": ["буду уметь", "будешь уметь", "будет уметь", "будем уметь", "будете уметь", "будут уметь"], "imp": ["умей", "умейте"], "note": "Différent de мочь: уметь = compétence acquise; мочь = possibilité physique.", "imp_fr": ["sache faire", "sachez faire"], "conj_fr": {"pres": ["sais", "sais", "sait", "savons", "savez", "savent"], "past": ["savait", "savait", "savait", "savaient"], "fut": ["saurai", "sauras", "saura", "saurons", "saurez", "sauront"]}},
+{"ru": "желать", "fr": "souhaiter / désirer", "asp": "imp", "pair": "", "pres": ["желаю", "желаешь", "желает", "желаем", "желаете", "желают"], "past": ["желал", "желала", "желало", "желали"], "fut": ["буду желать", "будешь желать", "будет желать", "будем желать", "будете желать", "будут желать"], "imp": ["желай", "желайте"], "note": "\"Желаю вам...\" = Je vous souhaite...", "imp_fr": ["souhaite", "souhaitez"], "conj_fr": {"pres": ["souhaite", "souhaites", "souhaite", "souhaitons", "souhaitez", "souhaitent"], "past": ["souhaitait", "souhaitait", "souhaitait", "souhaitaient"], "fut": ["souhaiterrai", "souhaiterras", "souhaiterra", "souhaiterrons", "souhaiterrez", "souhaiterront"]}},
+{"ru": "надеяться", "fr": "espérer", "asp": "imp", "pair": "", "pres": ["надеюсь", "надеешься", "надеется", "надеемся", "надеетесь", "надеются"], "past": ["надеялся", "надеялась", "надеялось", "надеялись"], "fut": ["буду надеяться", "будешь надеяться", "будет надеяться", "будем надеяться", "будете надеяться", "будут надеяться"], "imp": ["надейся", "надейтесь"], "note": "Verbe réfléchi. Base надей-.", "imp_fr": ["espère", "espérez"], "conj_fr": {"pres": ["espére", "espéres", "espére", "espérons", "espérez", "espérent"], "past": ["espérait", "espérait", "espérait", "espéraient"], "fut": ["espérerrai", "espérerras", "espérerra", "espérerrons", "espérerrez", "espérerront"]}},
+{"ru": "спешить", "fr": "se dépêcher / être pressé", "asp": "imp", "pair": "", "pres": ["спешу", "спешишь", "спешит", "спешим", "спешите", "спешат"], "past": ["спешил", "спешила", "спешило", "спешили"], "fut": ["буду спешить", "будешь спешить", "будет спешить", "будем спешить", "будете спешить", "будут спешить"], "imp": ["спеши", "спешите"], "note": "Conj. 2e type.", "imp_fr": ["dépêche-toi", "dépêchez-vous"], "conj_fr": {"pres": ["me dépêche", "te dépêches", "se dépêche", "nous dépêchons", "vous dépêchez", "se dépêchent"], "past": ["me dépêchait", "te dépêchait", "se dépêchait", "nous dépêchaient"], "fut": ["me dépêcherrai", "te dépêcherras", "se dépêcherra", "nous dépêcherrons", "vous dépêcherrez", "se dépêcherront"]}},
+{"ru": "бояться", "fr": "avoir peur / craindre", "asp": "imp", "pair": "", "pres": ["боюсь", "боишься", "боится", "боимся", "боитесь", "боятся"], "past": ["боялся", "боялась", "боялось", "боялись"], "fut": ["буду бояться", "будешь бояться", "будет бояться", "будем бояться", "будете бояться", "будут бояться"], "imp": ["бойся", "бойтесь"], "note": "Verbe réfléchi. Gouverne le génitif: бояться чего?", "imp_fr": ["aie peur", "ayez peur"], "conj_fr": {"pres": ["ai", "as", "a", "avons", "avez", "ont"], "past": ["avait", "avait", "avait", "avaient"], "fut": ["aurai", "auras", "aura", "aurons", "aurez", "auront"]}},
+{"ru": "ошибаться", "fr": "se tromper / faire une erreur", "asp": "imp", "pair": "", "pres": ["ошибаюсь", "ошибаешься", "ошибается", "ошибаемся", "ошибаетесь", "ошибаются"], "past": ["ошибался", "ошибалась", "ошибалось", "ошибались"], "fut": ["буду ошибаться", "будешь ошибаться", "будет ошибаться", "будем ошибаться", "будете ошибаться", "будут ошибаться"], "imp": ["ошибайся", "ошибайтесь"], "note": "Verbe réfléchi.", "imp_fr": ["trompe-toi", "trompez-vous"], "conj_fr": {"pres": ["me trompe", "te trompes", "se trompe", "nous trompons", "vous trompez", "se trompent"], "past": ["me trompait", "te trompait", "se trompait", "nous trompaient"], "fut": ["me tromperrai", "te tromperras", "se tromperra", "nous tromperrons", "vous tromperrez", "se tromperront"]}},
+{"ru": "повторять", "fr": "répéter", "asp": "imp", "pair": "повторить", "pres": ["повторяю", "повторяешь", "повторяет", "повторяем", "повторяете", "повторяют"], "past": ["повторял", "повторяла", "повторяло", "повторяли"], "fut": ["буду повторять", "будешь повторять", "будет повторять", "будем повторять", "будете повторять", "будут повторять"], "imp": ["повторяй", "повторяйте"], "note": "Conj. 1er type.", "imp_fr": ["répète", "répétez"], "conj_fr": {"pres": ["répéte", "répétes", "répéte", "répétons", "répétez", "répétent"], "past": ["répétait", "répétait", "répétait", "répétaient"], "fut": ["répéterrai", "répéterras", "répéterra", "répéterrons", "répéterrez", "répéterront"]}},
+{"ru": "повторить", "fr": "répéter (pf)", "asp": "pf", "pair": "повторять", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["повторил", "повторила", "повторило", "повторили"], "fut": ["повторю", "повторишь", "повторит", "повторим", "повторите", "повторят"], "imp": ["повтори", "повторите"], "note": "Conj. 2e type.", "imp_fr": ["répète", "répétez"], "conj_fr": {"pres": ["répéte", "répétes", "répéte", "répétons", "répétez", "répétent"], "past": ["a répété", "a répété", "a répété", "ont répété"], "fut": ["répéterrai", "répéterras", "répéterra", "répéterrons", "répéterrez", "répéterront"]}},
+{"ru": "переводить", "fr": "traduire / transférer", "asp": "imp", "pair": "", "pres": ["перевожу", "переводишь", "переводит", "переводим", "переводите", "переводят"], "past": ["переводил", "переводила", "переводило", "переводили"], "fut": ["буду переводить", "будешь переводить", "будет переводить", "будем переводить", "будете переводить", "будут переводить"], "imp": ["переводи", "переводите"], "note": "Alternance д→ж à la 1ère pers.", "imp_fr": ["traduis", "traduisez"], "conj_fr": {"pres": ["traduis", "traduis", "traduit", "traduisons", "traduisez", "traduisent"], "past": ["traduisait", "traduisait", "traduisait", "traduisaient"], "fut": ["traduirai", "traduiras", "traduira", "traduirons", "traduirez", "traduiront"]}},
+{"ru": "считать", "fr": "compter / considérer", "asp": "imp", "pair": "", "pres": ["считаю", "считаешь", "считает", "считаем", "считаете", "считают"], "past": ["считал", "считала", "считало", "считали"], "fut": ["буду считать", "будешь считать", "будет считать", "будем считать", "будете считать", "будут считать"], "imp": ["считай", "считайте"], "note": "\"Я считаю, что...\" = Je considère que...", "imp_fr": ["compte / considère", "comptez / considérez"], "conj_fr": {"pres": ["compte", "comptes", "compte", "comptons", "comptez", "comptent"], "past": ["comptait", "comptait", "comptait", "comptaient"], "fut": ["compterrai", "compterras", "compterra", "compterrons", "compterrez", "compterront"]}},
+{"ru": "обещать", "fr": "promettre", "asp": "biasp", "pair": "", "pres": ["обещаю", "обещаешь", "обещает", "обещаем", "обещаете", "обещают"], "past": ["обещал", "обещала", "обещало", "обещали"], "fut": ["обещаю", "обещаешь", "обещает", "обещаем", "обещаете", "обещают"], "imp": ["обещай", "обещайте"], "note": "Verbe biaspectuel. Futur = même forme que présent.", "imp_fr": ["promets", "promettez"], "conj_fr": {"pres": ["promets", "promets", "promet", "promettons", "promettez", "promettent"], "past": ["promettait", "promettait", "promettait", "promettaient"], "fut": ["promettrai", "promettras", "promettra", "promettrons", "promettrez", "promettront"]}},
+{"ru": "замечать", "fr": "remarquer / noter", "asp": "imp", "pair": "заметить", "pres": ["замечаю", "замечаешь", "замечает", "замечаем", "замечаете", "замечают"], "past": ["замечал", "замечала", "замечало", "замечали"], "fut": ["буду замечать", "будешь замечать", "будет замечать", "будем замечать", "будете замечать", "будут замечать"], "imp": ["замечай", "замечайте"], "note": "Conj. 1er type.", "imp_fr": ["remarque", "remarquez"], "conj_fr": {"pres": ["remarque", "remarques", "remarque", "remarquons", "remarquez", "remarquent"], "past": ["remarquait", "remarquait", "remarquait", "remarquaient"], "fut": ["remarquerrai", "remarquerras", "remarquerra", "remarquerrons", "remarquerrez", "remarquerront"]}},
+{"ru": "заметить", "fr": "remarquer (pf)", "asp": "pf", "pair": "замечать", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["заметил", "заметила", "заметило", "заметили"], "fut": ["замечу", "заметишь", "заметит", "заметим", "заметите", "заметят"], "imp": ["заметь", "заметьте"], "note": "Alternance т→ч à la 1ère pers.", "imp_fr": ["remarque", "remarquez"], "conj_fr": {"pres": ["remarque", "remarques", "remarque", "remarquons", "remarquez", "remarquent"], "past": ["a remarqué", "a remarqué", "a remarqué", "ont remarqué"], "fut": ["remarquerrai", "remarquerras", "remarquerra", "remarquerrons", "remarquerrez", "remarquerront"]}},
+{"ru": "знакомиться", "fr": "faire connaissance", "asp": "imp", "pair": "познакомиться", "pres": ["знакомлюсь", "знакомишься", "знакомится", "знакомимся", "знакомитесь", "знакомятся"], "past": ["знакомился", "знакомилась", "знакомилось", "знакомились"], "fut": ["буду знакомиться", "будешь знакомиться", "будет знакомиться", "будем знакомиться", "будете знакомиться", "будут знакомиться"], "imp": ["знакомься", "знакомьтесь"], "note": "Verbe réfléchi. Alternance м→мл à la 1ère pers.", "imp_fr": ["fais connaissance", "faites connaissance"], "conj_fr": {"pres": ["fais", "fais", "fait", "faisons", "faites", "font"], "past": ["faisait", "faisait", "faisait", "faisaient"], "fut": ["ferai", "feras", "fera", "ferons", "ferez", "feront"]}},
+{"ru": "познакомиться", "fr": "faire connaissance (pf)", "asp": "pf", "pair": "знакомиться", "pres": ["—", "—", "—", "—", "—", "—"], "past": ["познакомился", "познакомилась", "познакомилось", "познакомились"], "fut": ["познакомлюсь", "познакомишься", "познакомится", "познакомимся", "познакомитесь", "познакомятся"], "imp": ["познакомься", "познакомьтесь"], "note": "Perfectif de знакомиться.", "imp_fr": ["fais connaissance", "faites connaissance"], "conj_fr": {"pres": ["fais", "fais", "fait", "faisons", "faites", "font"], "past": ["a fait", "a fait", "a fait", "ont faient"], "fut": ["ferai", "feras", "fera", "ferons", "ferez", "feront"]}}
+];
+
+const PHRASES = [{"verb": "говорить", "phrase": "Он хорошо ___ по-русски.", "temps": "pres", "pers": 2, "fr": "Il parle bien russe."}, {"verb": "сказать", "phrase": "Она ___ мне правду.", "temps": "fut", "pers": 2, "fr": "Elle me dira la vérité."}, {"verb": "читать", "phrase": "Каждый день я ___ газету.", "temps": "pres", "pers": 0, "fr": "Chaque jour je lis le journal."}, {"verb": "писать", "phrase": "Ты ___ письмо другу.", "temps": "pres", "pers": 1, "fr": "Tu écris une lettre à un ami."}, {"verb": "знать", "phrase": "Мы ___ этот город.", "temps": "pres", "pers": 3, "fr": "Nous connaissons cette ville."}, {"verb": "хотеть", "phrase": "Дети ___ мороженое.", "temps": "pres", "pers": 5, "fr": "Les enfants veulent de la glace."}, {"verb": "идти", "phrase": "Куда ты ___?", "temps": "pres", "pers": 1, "fr": "Où vas-tu ?"}, {"verb": "работать", "phrase": "Она ___ в больнице.", "temps": "pres", "pers": 2, "fr": "Elle travaille à l'hôpital."}, {"verb": "жить", "phrase": "Мы ___ в Париже.", "temps": "pres", "pers": 3, "fr": "Nous vivons à Paris."}, {"verb": "любить", "phrase": "Я ___ музыку.", "temps": "pres", "pers": 0, "fr": "J'aime la musique."}, {"verb": "думать", "phrase": "Что ты об этом ___?", "temps": "pres", "pers": 1, "fr": "Qu'est-ce que tu en penses ?"}, {"verb": "понять", "phrase": "Наконец он ___ задачу.", "temps": "fut", "pers": 2, "fr": "Il finira enfin par comprendre la tâche."}, {"verb": "начать", "phrase": "Когда ты ___ учиться?", "temps": "fut", "pers": 1, "fr": "Quand commenceras-tu à étudier ?"}, {"verb": "есть", "phrase": "Они ___ суп.", "temps": "pres", "pers": 5, "fr": "Ils mangent de la soupe."}, {"verb": "пить", "phrase": "Мы ___ чай.", "temps": "pres", "pers": 3, "fr": "Nous buvons du thé."}, {"verb": "смотреть", "phrase": "Вечером мы ___ телевизор.", "temps": "pres", "pers": 3, "fr": "Le soir nous regardons la télé."}, {"verb": "слушать", "phrase": "___ меня внимательно!", "temps": "imp", "pers": 0, "fr": "Écoute-moi attentivement !"}, {"verb": "ждать", "phrase": "Я тебя ___ уже час.", "temps": "pres", "pers": 0, "fr": "Je t'attends depuis une heure."}, {"verb": "помочь", "phrase": "Ты мне ___?", "temps": "fut", "pers": 1, "fr": "Tu m'aideras ?"}, {"verb": "купить", "phrase": "Мама ___ хлеб в магазине.", "temps": "fut", "pers": 2, "fr": "Maman achètera du pain au magasin."}, {"verb": "найти", "phrase": "Он наконец ___ потерянный кошелёк.", "temps": "past", "pers": 0, "fr": "Il a enfin trouvé son portefeuille perdu."}, {"verb": "вернуться", "phrase": "Он ___ домой поздно.", "temps": "fut", "pers": 2, "fr": "Il rentrera tard à la maison."}, {"verb": "забыть", "phrase": "Не ___ позвонить!", "temps": "imp", "pers": 0, "fr": "N'oublie pas d'appeler !"}, {"verb": "вставать", "phrase": "Я каждый день ___ в семь утра.", "temps": "pres", "pers": 0, "fr": "Je me lève tous les jours à sept heures du matin."}, {"verb": "спать", "phrase": "Ребёнок уже ___.", "temps": "pres", "pers": 2, "fr": "L'enfant dort déjà."}, {"verb": "открыть", "phrase": "___ окно, пожалуйста.", "temps": "imp", "pers": 0, "fr": "Ouvre la fenêtre, s'il te plaît."}, {"verb": "закрыть", "phrase": "___ дверь!", "temps": "imp", "pers": 0, "fr": "Ferme la porte !"}, {"verb": "понимать", "phrase": "Ты меня ___?", "temps": "pres", "pers": 1, "fr": "Tu me comprends ?"}, {"verb": "отвечать", "phrase": "Студент ___ на вопрос.", "temps": "pres", "pers": 2, "fr": "L'étudiant répond à la question."}, {"verb": "позвонить", "phrase": "___ мне завтра!", "temps": "imp", "pers": 0, "fr": "Appelle-moi demain !"}];
+const PERSONS = ["я", "ты", "он/она", "мы", "вы", "они"];
+const PAST_LABELS = ["masc.", "fém.", "neut.", "pl."];
+const TEMPS_LABELS = {"pres": "Présent", "past": "Passé", "fut": "Futur", "imp": "Impératif"};
+const LS_KEY = 'russe_verbes_v1';
+
+// ══════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════
+let filters = { ex:['qcm_ver','qcm_th','compl','ident','phrase'], temps:['pres','past','fut','imp'], asp:['imp','pf','biasp'] };
+let modes = { srs:false, chrono:false };
+let session = { qs:[], cur:0, right:0, wrong:0, isReview:false, statsByTemps:{pres:{r:0,w:0},past:{r:0,w:0},fut:{r:0,w:0},imp:{r:0,w:0}} };
+let answered = false, selectedCB = [], streakHistory = [];
+let chronoTimer = null, chronoLeft = 0;
+let wordStats = {}, errorList = [], srsData = {};
+
+// ══════════════════════════════════════════════════════
+// PERSISTENCE
+// ══════════════════════════════════════════════════════
+function saveState(){
+  try {
+    const d = { wordStats, errorList, srsData, modes, filters };
+    localStorage.setItem(LS_KEY, JSON.stringify(d));
+  } catch(e){}
+}
+function loadState(){
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if(!raw) return;
+    const d = JSON.parse(raw);
+    if(d.wordStats) wordStats = d.wordStats;
+    if(d.errorList) errorList = d.errorList;
+    if(d.srsData) srsData = d.srsData;
+    if(d.modes) modes = d.modes;
+    syncChips();
+    updateErrBadge();
+    const total = Object.values(wordStats).reduce((a,v)=>a+(v.r||0)+(v.w||0),0);
+    if(total > 0) showToast(`✓ PROGRESSION RESTAURÉE · ${total} QUESTIONS`);
+  } catch(e){}
+}
+function syncChips(){
+  document.getElementById('chipSRS').classList.toggle('active', modes.srs);
+  document.getElementById('chipChrono').classList.toggle('active', modes.chrono);
+  document.querySelectorAll('[data-f]').forEach(el => {
+    const arr = filters[el.dataset.f];
+    el.classList.toggle('active', arr && arr.includes(el.dataset.v));
+  });
+}
+function exportData(){
+  const d = { wordStats, errorList, srsData, modes, filters, exportDate: new Date().toISOString() };
+  const a = document.createElement('a');
+  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(d, null, 2));
+  a.download = `verbes-progression-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+}
+function importData(event){
+  const file = event.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const d = JSON.parse(e.target.result);
+      if(d.wordStats) wordStats = d.wordStats;
+      if(d.errorList) errorList = d.errorList;
+      if(d.srsData) srsData = d.srsData;
+      if(d.modes) modes = d.modes;
+      saveState(); syncChips(); updateErrBadge();
+      showToast('✓ DONNÉES IMPORTÉES');
+    } catch(err){ alert('Fichier invalide'); }
+  };
+  reader.readAsText(file);
+}
+function resetStats(){
+  if(!confirm('Réinitialiser toutes les statistiques ?')) return;
+  wordStats = {}; errorList = []; srsData = {};
+  saveState(); updateErrBadge(); renderStatTab(); renderErrTab();
+  showToast('STATS RÉINITIALISÉES');
+}
+
+// ══════════════════════════════════════════════════════
+// SRS
+// ══════════════════════════════════════════════════════
+function srsKey(v, temps, pers){ return `${v.ru}|${temps}|${pers}`; }
+function getSrsState(key){
+  const d = srsData[key];
+  if(!d) return 'new';
+  if(d.interval >= 21) return 'known';
+  if(d.due && new Date(d.due) <= new Date()) return 'due';
+  return 'learning';
+}
+function updateSrs(key, ok){
+  if(!srsData[key]) srsData[key] = {interval:1, due:null, streak:0};
+  const d = srsData[key];
+  if(ok){ d.streak++; d.interval = Math.min(d.interval * (d.streak > 2 ? 2.5 : 1.5), 60); }
+  else { d.streak = 0; d.interval = 1; }
+  const due = new Date();
+  due.setDate(due.getDate() + Math.round(d.interval));
+  d.due = due.toISOString();
+}
+function weightedRand(pool){
+  const weights = pool.map(v => {
+    const total = Object.keys(srsData).filter(k=>k.startsWith(v.ru+'|')).length;
+    const due = Object.keys(srsData).filter(k=>k.startsWith(v.ru+'|') && getSrsState(k)==='due').length;
+    return 1 + due * 3 + (total === 0 ? 2 : 0);
+  });
+  const sum = weights.reduce((a,b)=>a+b, 0);
+  let r = Math.random() * sum;
+  for(let i = 0; i < pool.length; i++){ r -= weights[i]; if(r <= 0) return pool[i]; }
+  return pool[pool.length-1];
+}
+
+// ══════════════════════════════════════════════════════
+// FILTERS & MODES
+// ══════════════════════════════════════════════════════
+function toggleFilter(el){
+  const f = el.dataset.f, v = el.dataset.v;
+  const idx = filters[f].indexOf(v);
+  if(idx >= 0){ if(filters[f].length > 1){ filters[f].splice(idx,1); el.classList.remove('active'); } }
+  else { filters[f].push(v); el.classList.add('active'); }
+  saveState();
+}
+function toggleMode(m, el){
+  modes[m] = !modes[m];
+  el.classList.toggle('active', modes[m]);
+  saveState();
+}
+
+// ══════════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════════
+function show(id){ ['homeScreen','exScreen','resultScreen'].forEach(s=>document.getElementById(s).classList.add('hidden')); document.getElementById(id).classList.remove('hidden'); }
+function goHome(){ stopChrono(); streakHistory=[]; show('homeScreen'); renderErrTab(); renderStatTab(); }
+function switchTab(id, el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(id).classList.add('active');
+  if(id==='tabErr') renderErrTab();
+  if(id==='tabStat') renderStatTab();
+}
+function showToast(msg, duration=3000){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), duration);
+}
+
+// ══════════════════════════════════════════════════════
+// SHUFFLE
+// ══════════════════════════════════════════════════════
+function shuffle(a){ return [...a].sort(()=>Math.random()-0.5); }
+function rand(a){ return a[Math.floor(Math.random()*a.length)]; }
+
+// ══════════════════════════════════════════════════════
+// BUILD QUESTIONS
+// ══════════════════════════════════════════════════════
+function getTempsForVerb(v, tempsList){
+  // Pour les perfectifs: pas de présent (sauf exceptions)
+  return tempsList.filter(t => {
+    if(t === 'pres' && v.asp === 'pf') return false;
+    if(t === 'imp' && v.imp[0] === '—') return false;
+    return true;
+  });
+}
+
+function buildQuestions(pool, n, isReview, mode){
+  const qs = [];
+  let attempts = 0;
+  const maxAttempts = n * 20; // guard against infinite loop
+  for(let i = 0; i < n && attempts < maxAttempts; i++){
+    attempts++;
+    const verb = (modes.srs && !isReview) ? weightedRand(pool) : rand(pool);
+    const availableTemps = getTempsForVerb(verb, filters.temps.length ? filters.temps : ['pres','past','fut','imp']);
+    if(availableTemps.length === 0){ i--; continue; }
+    const temps = rand(availableTemps);
+
+    let type;
+    if(mode === 'paires'){
+      // Only pick verbs that actually have a pair in VERBES
+      if(!verb.pair || !VERBES.find(v=>v.ru===verb.pair)){ i--; continue; }
+      type = 'paires';
+    } else if(isReview){
+      type = rand(['compl','compl','qcm_ver','qcm_th']);
+    } else {
+      type = rand([...filters.ex]);
+    }
+
+    let q;
+    if(type === 'qcm_ver') q = buildQCMver(verb, temps, 0);
+    else if(type === 'qcm_th') q = buildQCMth(verb, temps, 0);
+    else if(type === 'compl') q = buildCompl(verb, temps, 0);
+    else if(type === 'ident') q = buildIdent(verb);
+    else if(type === 'paires') q = buildPaires(verb);
+    else q = buildPhrase(pool, verb) || buildQCMver(verb, temps, 0);
+
+    if(q){ q.isHard = getSrsState(srsKey(verb, temps, 0)) === 'due'; qs.push(q); }
+    else i--;
+  }
+  return qs;
+}
+
+// ── QCM VERSION (ru → fr): quelle traduction ? ──
+function buildQCMver(verb, temps, depth=0){
+  if(depth > 3) return null;
+  let form, persLabel, persIdx = -1;
+  if(temps === 'past'){
+    persIdx = Math.floor(Math.random()*4);
+    form = verb.past[persIdx];
+    persLabel = ['masc.','fém.','neut.','pl.'][persIdx];
+  } else if(temps === 'imp'){
+    persIdx = Math.floor(Math.random()*2);
+    form = verb.imp[persIdx];
+    persLabel = persIdx === 0 ? 'sg (ты)' : 'pl (вы)';
+  } else {
+    persIdx = Math.floor(Math.random()*6);
+    const arr = temps === 'pres' ? verb.pres : verb.fut;
+    form = arr[persIdx];
+    persLabel = PERSONS[persIdx];
+  }
+  if(!form || form === '—'){ return buildQCMver(verb, temps === 'pres' ? 'past' : 'past', depth+1); }
+  // Traduction conjuguée : utilise conj_fr pour la bonne réponse ET les distracteurs
+  const getConjFr = (v, t, pi) => {
+    if(t === 'imp') return v.imp_fr ? v.imp_fr[pi > 0 ? 1 : 0] : v.fr;
+    const cf = v.conj_fr;
+    if(!cf) return v.fr;
+    const arr = t === 'past' ? cf.past : t === 'fut' ? cf.fut : cf.pres;
+    return arr ? arr[pi] || v.fr : v.fr;
+  };
+  const PRONS_PRES = ['je','tu','il/elle','nous','vous','ils/elles'];
+  const PRONS_PAST = ['il','elle','il/elle','ils/elles'];
+  const pron = temps === 'past' ? PRONS_PAST[persIdx] : temps === 'imp' ? (persIdx===0?'(tu)':'(vous)') : PRONS_PRES[persIdx];
+  const correctConj = temps === 'imp' ? getConjFr(verb, temps, persIdx) : `${pron} ${getConjFr(verb, temps, persIdx)}`;
+  // 4 wrong = other verbs, same tense+person, conjugated
+  const wrongPool = shuffle(VERBES.filter(v=>v.ru!==verb.ru));
+  const wrong = [];
+  for(const wv of wrongPool){
+    const wf = getConjFr(wv, temps, persIdx);
+    if(wf && wf !== correctConj && !wrong.includes(wf)){
+      const wConj = temps === 'imp' ? wf : `${pron} ${wf}`;
+      if(wConj !== correctConj && !wrong.includes(wConj)) wrong.push(wConj);
+    }
+    if(wrong.length >= 4) break;
+  }
+  return { type:'qcm_ver', verb, temps, form, persLabel, persIdx, correct:correctConj, options:shuffle([correctConj,...wrong]), exType:'VERSION · RU→FR' };
+}
+
+// ── QCM THÈME (fr → ru): quelle forme russe ? ──
+function buildQCMth(verb, temps, depth=0){
+  if(depth > 3) return null;
+  let persIdx, form, persLabel, prompt;
+  if(temps === 'past'){
+    persIdx = Math.floor(Math.random()*4);
+    form = verb.past[persIdx];
+    persLabel = ['masc.','fém.','neut.','pl.'][persIdx];
+    prompt = ['il','elle','il/elle (neutre)','ils/elles'][persIdx];
+  } else if(temps === 'imp'){
+    persIdx = Math.floor(Math.random()*2);
+    form = verb.imp[persIdx];
+    persLabel = persIdx === 0 ? 'sg (ты)' : 'pl (вы)';
+    const impFr = verb.imp_fr ? verb.imp_fr[persIdx] : verb.fr.split(' / ')[0];
+    prompt = persIdx === 0 ? `"${impFr} !" (sing.)` : `"${impFr} !" (plur.)`;
+  } else {
+    persIdx = Math.floor(Math.random()*6);
+    const arr = temps === 'pres' ? verb.pres : verb.fut;
+    form = arr[persIdx];
+    persLabel = PERSONS[persIdx];
+    prompt = ['je','tu','il/elle','nous','vous','ils/elles'][persIdx];
+  }
+  if(!form || form === '—'){ return buildQCMth(verb, 'past', depth+1); }
+  // 4 mauvaises options: mix formes du même verbe + formes d'autres verbes (même temps)
+  const sameVerbForms = [...verb.pres,...verb.past,...verb.fut,...verb.imp].filter(f=>f&&f!=='—'&&f!==form);
+  // Pick 2 forms from other verbs at the same temps
+  const otherVerbs = shuffle(VERBES.filter(v=>v.ru!==verb.ru));
+  const otherForms = [];
+  for(const ov of otherVerbs){
+    const ovArr = temps==='pres'?ov.pres:temps==='past'?ov.past:temps==='fut'?ov.fut:ov.imp;
+    const validForms = ovArr.filter(f=>f&&f!=='—'&&f!==form&&!sameVerbForms.includes(f));
+    if(validForms.length>0){ otherForms.push(rand(validForms)); }
+    if(otherForms.length>=2) break;
+  }
+  const wrong = shuffle([...shuffle(sameVerbForms).slice(0,2), ...otherForms]).slice(0,4);
+  return { type:'qcm_th', verb, temps, form, persLabel, persIdx, prompt, correct:form, options:shuffle([form,...wrong]), exType:'THÈME · FR→RU' };
+}
+
+// ── COMPLÉTION ──
+function buildCompl(verb, temps, depth=0){
+  if(depth > 3) return null;
+  let persIdx, form, persLabel;
+  if(temps === 'past'){
+    persIdx = Math.floor(Math.random()*4);
+    form = verb.past[persIdx];
+    persLabel = ['masc.','fém.','neut.','pl.'][persIdx];
+  } else if(temps === 'imp'){
+    persIdx = Math.floor(Math.random()*2);
+    form = verb.imp[persIdx];
+    persLabel = persIdx === 0 ? 'sg (ты)' : 'pl (вы)';
+  } else {
+    persIdx = Math.floor(Math.random()*6);
+    form = (temps==='pres'?verb.pres:verb.fut)[persIdx];
+    persLabel = PERSONS[persIdx];
+  }
+  if(!form || form === '—'){ return buildCompl(verb, 'past', depth+1); }
+  return { type:'compl', verb, temps, form, persLabel, persIdx, correct:form, exType:'COMPLÉTION · FR→RU' };
+}
+
+// ── IDENTIFICATION ──
+function buildIdent(verb){
+  // Choisir une forme au hasard, l'apprenant doit identifier temps + personne
+  const pool = [];
+  verb.pres.forEach((f,i)=>{ if(f&&f!=='—') pool.push({f,temps:'pres',pers:i,label:`${TEMPS_LABELS['pres']} · ${PERSONS[i]}`}); });
+  verb.past.forEach((f,i)=>{ if(f&&f!=='—') pool.push({f,temps:'past',pers:i,label:`${TEMPS_LABELS['past']} · ${['masc.','fém.','neut.','pl.'][i]}`}); });
+  verb.fut.forEach((f,i)=>{ if(f&&f!=='—') pool.push({f,temps:'fut',pers:i,label:`${TEMPS_LABELS['fut']} · ${PERSONS[i]}`}); });
+  verb.imp.forEach((f,i)=>{ if(f&&f!=='—') pool.push({f,temps:'imp',pers:i,label:`${TEMPS_LABELS['imp']} · ${i===0?'sg':'pl'}`}); });
+  if(pool.length === 0) return null;
+  const chosen = rand(pool);
+  // Toutes les combinaisons qui donnent cette même forme
+  const correctLabels = pool.filter(p=>p.f===chosen.f).map(p=>p.label);
+  // 4 mauvaises options → toujours 5 au total
+  // D'abord les labels du même verbe, puis compléter avec d'autres verbes si besoin
+  const allLabels = [...new Set(pool.map(p=>p.label))];
+  let wrongLabels = shuffle(allLabels.filter(l=>!correctLabels.includes(l)));
+  if(wrongLabels.length < 4){
+    // Compléter avec des labels d'autres temps/personnes génériques
+    const extraPool = [
+      `${TEMPS_LABELS['pres']} · я`, `${TEMPS_LABELS['pres']} · ты`,
+      `${TEMPS_LABELS['pres']} · он/она`, `${TEMPS_LABELS['pres']} · мы`,
+      `${TEMPS_LABELS['pres']} · вы`, `${TEMPS_LABELS['pres']} · они`,
+      `${TEMPS_LABELS['past']} · masc.`, `${TEMPS_LABELS['past']} · fém.`,
+      `${TEMPS_LABELS['past']} · pl.`,
+      `${TEMPS_LABELS['fut']} · я`, `${TEMPS_LABELS['fut']} · ты`,
+      `${TEMPS_LABELS['fut']} · он/она`, `${TEMPS_LABELS['fut']} · мы`,
+      `${TEMPS_LABELS['fut']} · вы`, `${TEMPS_LABELS['fut']} · они`,
+      `${TEMPS_LABELS['imp']} · sg`, `${TEMPS_LABELS['imp']} · pl`,
+    ];
+    const extras = shuffle(extraPool.filter(l=>!correctLabels.includes(l)&&!wrongLabels.includes(l)));
+    wrongLabels = [...wrongLabels, ...extras].slice(0,4);
+  } else {
+    wrongLabels = wrongLabels.slice(0,4);
+  }
+  const options = shuffle([...correctLabels.slice(0,1),...wrongLabels]);
+  return { type:'ident', verb, form:chosen.f, correctLabels, options, correctAnswer:correctLabels[0], exType:'IDENTIFICATION · TEMPS/PERS.' };
+}
+
+// ── PHRASES EN CONTEXTE ──
+function buildPhrase(pool, fallbackVerb){
+  const verbRus = pool.map(v=>v.ru);
+  const available = PHRASES.filter(p => verbRus.includes(p.verb));
+  if(available.length === 0) return null;
+  const p = rand(available);
+  const verb = VERBES.find(v=>v.ru===p.verb);
+  if(!verb) return null;
+  const arr = p.temps==='pres'?verb.pres:p.temps==='past'?verb.past:p.temps==='fut'?verb.fut:verb.imp;
+  const form = p.temps==='imp' ? verb.imp[0] : arr[p.pers];
+  if(!form || form==='—') return null;
+  // Options QCM: 3 autres formes du même verbe
+  // Phrase contexte : on cherche la bonne FORME du verbe donné → toutes les options = formes du même verbe
+  const sameVForms = [...verb.pres,...verb.past,...verb.fut,...verb.imp].filter(f=>f&&f!=='—'&&f!==form);
+  const phraseWrong = shuffle(sameVForms).slice(0,4);
+  return { type:'phrase', verb, temps:p.temps, pers:p.pers, form, correct:form, phrase:p.phrase, frTrans:p.fr, options:shuffle([form,...phraseWrong]), exType:'PHRASE EN CONTEXTE' };
+}
+
+// ── PAIRES ASPECTUELLES ──
+function buildPaires(verb){
+  if(!verb.pair) return null;
+  const paired = VERBES.find(v=>v.ru===verb.pair);
+  if(!paired) return null;
+  // Question: imp ou pf dans ce contexte ?
+  const impVerb = verb.asp==='imp' ? verb : paired;
+  const pfVerb = verb.asp==='pf' ? verb : paired;
+  const vFr = impVerb.fr.replace(' / ',' / ').replace(' (imp)','').split(' / ')[0];
+  const contexts = [
+    { fr:`"${vFr}" (action en cours, habituelle)`, correct:impVerb.ru, key:'imp' },
+    { fr:`"${vFr}" (action accomplie, résultat)`, correct:pfVerb.ru, key:'pf' },
+  ];
+  const ctx = rand(contexts);
+  return { type:'paires', verb, paired, question:ctx.fr, correct:ctx.correct, options:shuffle([verb.ru, paired.ru]), aspKey:ctx.key, exType:'PAIRES ASPECTUELLES' };
+}
+
+// ══════════════════════════════════════════════════════
+// SESSION
+// ══════════════════════════════════════════════════════
+function startSession(isReview, mode){
+  let pool;
+  if(isReview){
+    if(errorList.length===0){ alert('Aucune erreur à réviser !'); return; }
+    pool = errorList.map(e=>e.verb).filter(Boolean);
+  } else {
+    pool = VERBES.filter(v => filters.asp.includes(v.asp));
+    if(pool.length === 0){ alert('Aucun verbe avec ces filtres !'); return; }
+  }
+  const n = parseInt(document.getElementById('numQ').value);
+  session = { qs:buildQuestions(pool,n,isReview,mode), cur:0, right:0, wrong:0, isReview, statsByTemps:{pres:{r:0,w:0},past:{r:0,w:0},fut:{r:0,w:0},imp:{r:0,w:0}} };
+  document.getElementById('exR').textContent=0;
+  document.getElementById('exW').textContent=0;
+  show('exScreen'); renderQ();
+}
+
+// ══════════════════════════════════════════════════════
+// RENDER QUESTION
+// ══════════════════════════════════════════════════════
+function renderQ(){
+  answered = false; selectedCB = [];
+  stopChrono();
+  const qc = document.getElementById('qCard');
+  const az = document.getElementById('aZone');
+  if(qc) qc.innerHTML = '';
+  if(az) az.innerHTML = '';
+  document.getElementById('fbZone').classList.add('hidden');
+  document.getElementById('nextBtn').classList.add('hidden');
+  document.getElementById('homeBtn').classList.add('hidden');
+  document.getElementById('chronoWrap').classList.add('hidden');
+
+  const q = session.qs[session.cur];
+  document.getElementById('progFill').style.width = (session.cur/session.qs.length*100)+'%';
+
+  const badge = document.getElementById('exBadge');
+  badge.textContent = q.exType;
+  badge.className = 'ex-type-badge' + (q.type.includes('ver')||q.type==='ident'?' version':q.type.includes('th')||q.type==='compl'?' theme':q.type==='paires'?' paires':'');
+  document.getElementById('hardBadge').classList.toggle('hidden', !q.isHard);
+
+  renderStreak();
+  const aspBadge = `<span class="asp-badge ${q.verb.asp==='imp'?'asp-imp':q.verb.asp==='pf'?'asp-pf':'asp-biasp'}">${q.verb.asp==='imp'?'IMP.':q.verb.asp==='pf'?'PF.':'BIASP.'}</span>`;
+
+  if(q.type === 'qcm_ver'){
+    qc.innerHTML = `${aspBadge}<div class="verb-ru">${q.form}</div>
+      <div class="q-label">Quelle est la traduction de cette forme ?</div>
+      <div class="q-sub">Infinitif : ${q.verb.ru}</div>
+      <span class="person-tag">${TEMPS_LABELS[q.temps]} · ${q.persLabel}</span>`;
+    az.innerHTML = `<div class="options">${q.options.map((o,i)=>`<button class="opt-btn" onclick="answerQCM(this,'${o.replace(/'/g,"\\'")}','${q.correct.replace(/'/g,"\\'")}')"><span class="opt-letter">${String.fromCharCode(65+i)}</span>${o}</button>`).join('')}</div>`;
+    if(modes.chrono){ startChrono(q.isHard?12:15); }
+
+  } else if(q.type === 'qcm_th'){
+    qc.innerHTML = `${aspBadge}<div class="verb-ru">${q.verb.ru}</div>
+      <div class="verb-fr">${q.verb.fr}</div>
+      <div class="q-label">Quelle forme correspond à : <strong>${q.prompt}</strong></div>
+      <span class="person-tag">${TEMPS_LABELS[q.temps]} · ${q.persLabel}</span>`;
+    az.innerHTML = `<div class="options">${q.options.map((o,i)=>`<button class="opt-btn" onclick="answerQCM(this,'${o.replace(/'/g,"\\'")}','${q.correct.replace(/'/g,"\\'")}')"><span class="opt-letter">${String.fromCharCode(65+i)}</span>${o}</button>`).join('')}</div>`;
+    if(modes.chrono){ startChrono(q.isHard?12:15); }
+
+  } else if(q.type === 'compl'){
+    const hint = q.temps==='past' ? `Passé · ${q.persLabel}` : q.temps==='imp' ? `Impératif · ${q.persLabel}` : `${TEMPS_LABELS[q.temps]} · ${q.persLabel}`;
+    qc.innerHTML = `${aspBadge}<div class="verb-ru">${q.verb.ru}</div><div class="verb-fr">${q.verb.fr}</div>
+      <div class="q-label">Écris la forme correcte :</div>
+      <span class="person-tag">${hint}</span>`;
+    az.innerHTML = `<div class="input-zone"><input class="text-input" id="inp" type="text" placeholder="Écris en russe..." autocomplete="off" autocorrect="off" spellcheck="false"></div>
+      <button class="btn-primary" id="checkBtn" onclick="answerCompl()">VÉRIFIER</button>`;
+    setTimeout(()=>{ const e=document.getElementById('inp'); if(e)e.focus(); }, 100);
+    document.getElementById('inp').addEventListener('keydown', e=>{ if(e.key==='Enter') answerCompl(); });
+
+  } else if(q.type === 'ident'){
+    qc.innerHTML = `${aspBadge}<div class="verb-ru">${q.form}</div><div class="verb-fr">${q.verb.ru} — ${q.verb.fr}</div>
+      <div class="q-label">Quel est le <strong>temps et la personne</strong> de cette forme ?</div>`;
+    az.innerHTML = `<div class="options">${q.options.map((o,i)=>`<button class="opt-btn" onclick="answerIdent(this,'${o.replace(/'/g,"\\'")}')"><span class="opt-letter">${String.fromCharCode(65+i)}</span>${o}</button>`).join('')}</div>`;
+    if(modes.chrono){ startChrono(q.isHard?12:15); }
+
+  } else if(q.type === 'phrase'){
+    qc.innerHTML = `${aspBadge}<div class="verb-ru" style="font-size:20px;color:var(--text);margin:10px 0">${q.phrase}</div>
+      <div class="verb-fr">${q.frTrans}</div>
+      <div class="q-label">Complète avec la bonne forme de <strong>${q.verb.ru}</strong></div>`;
+    az.innerHTML = `<div class="options">${q.options.map((o,i)=>`<button class="opt-btn" onclick="answerQCM(this,'${o.replace(/'/g,"\\'")}','${q.correct.replace(/'/g,"\\'")}')"><span class="opt-letter">${String.fromCharCode(65+i)}</span>${o}</button>`).join('')}</div>`;
+    if(modes.chrono){ startChrono(q.isHard?12:15); }
+
+  } else if(q.type === 'paires'){
+    qc.innerHTML = `<div class="verb-ru" style="font-size:18px;color:var(--text);margin:10px 0">${q.question}</div>
+      <div class="q-label">Quel verbe utilise-t-on ?</div>
+      <div class="pair-display">
+        <span class="asp-badge asp-imp">IMP.</span> <span class="ru">${q.verb.asp==='imp'?q.verb.ru:q.paired.ru}</span> — ${q.verb.asp==='imp'?q.verb.fr:q.paired.fr}<br>
+        <span class="asp-badge asp-pf">PF.</span> <span class="ru">${q.verb.asp==='pf'?q.verb.ru:q.paired.ru}</span> — ${q.verb.asp==='pf'?q.verb.fr:q.paired.fr}
+      </div>`;
+    az.innerHTML = `<div class="options">${q.options.map((o,i)=>`<button class="opt-btn" onclick="answerQCM(this,'${o}','${q.correct}')"><span class="opt-letter">${String.fromCharCode(65+i)}</span>${o}</button>`).join('')}</div>`;
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// ANSWERS
+// ══════════════════════════════════════════════════════
+function normalizeRu(s){ return s.toLowerCase().replace(/ё/g,'е').trim(); }
+
+function answerQCM(btn, chosen, correct){
+  if(answered) return; answered = true; stopChrono();
+  document.querySelectorAll('.opt-btn').forEach(b=>{ b.disabled=true; if(b.textContent.trim().slice(1).trim()===correct) b.classList.add('reveal'); });
+  const ok = chosen === correct;
+  btn.classList.add(ok?'correct':'wrong');
+  const q = session.qs[session.cur];
+  recordResult(q, ok);
+  streakHistory.push(ok); renderStreak();
+  if(ok) session.right++; else session.wrong++;
+  updateExScore(); showFeedback(ok, q);
+}
+
+function answerCompl(){
+  if(answered) return;
+  const inp = document.getElementById('inp');
+  if(!inp) return;
+  const val = inp.value.trim();
+  answered = true; inp.disabled = true; stopChrono();
+  const q = session.qs[session.cur];
+  const ok = normalizeRu(val) === normalizeRu(q.correct);
+  inp.classList.add(ok?'correct':'wrong');
+  recordResult(q, ok);
+  streakHistory.push(ok); renderStreak();
+  if(ok) session.right++; else session.wrong++;
+  updateExScore();
+  const btn = document.getElementById('checkBtn'); if(btn) btn.disabled = true;
+  showFeedback(ok, q);
+}
+
+function answerIdent(btn, chosen){
+  if(answered) return; answered = true; stopChrono();
+  document.querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);
+  const q = session.qs[session.cur];
+  const ok = q.correctLabels.includes(chosen);
+  btn.classList.add(ok?'correct':'wrong');
+  // Révèle la bonne réponse
+  document.querySelectorAll('.opt-btn').forEach(b=>{ if(q.correctLabels.includes(b.textContent.trim().slice(1).trim())) b.classList.add('reveal'); });
+  recordResult(q, ok);
+  streakHistory.push(ok); renderStreak();
+  if(ok) session.right++; else session.wrong++;
+  updateExScore(); showFeedback(ok, q);
+}
+
+function timeOut(){
+  if(answered) return; answered = true;
+  document.getElementById('chronoWrap').classList.add('hidden');
+  const q = session.qs[session.cur];
+  recordResult(q, false);
+  streakHistory.push(false); renderStreak();
+  session.wrong++; updateExScore();
+  document.querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);
+  const zone = document.getElementById('fbZone');
+  zone.classList.remove('hidden');
+  zone.className = 'feedback wrong-fb';
+  zone.innerHTML = `<div class="fb-title ko">⏱ TEMPS ÉCOULÉ !</div>
+    <div class="fb-body">Bonne réponse : <strong>${getCorrectAnswer(q)}</strong></div>
+    ${buildConjTable(q)}`;
+  document.getElementById('nextBtn').classList.remove('hidden');
+  document.getElementById('homeBtn').classList.remove('hidden');
+}
+
+function recordResult(q, ok){
+  const key = q.verb.ru + '|' + (q.temps||'?');
+  if(!wordStats[key]) wordStats[key] = {r:0,w:0};
+  if(ok) wordStats[key].r++; else wordStats[key].w++;
+  if(q.temps && session.statsByTemps[q.temps]){
+    if(ok) session.statsByTemps[q.temps].r++; else session.statsByTemps[q.temps].w++;
+  }
+  if(!ok){
+    const existing = errorList.findIndex(e=>e.verb && e.verb.ru===q.verb.ru);
+    if(existing>=0) errorList[existing].count++;
+    else errorList.push({ verb:q.verb, count:1 });
+  }
+  const sKey = srsKey(q.verb, q.temps||'?', q.persIdx||0);
+  updateSrs(sKey, ok);
+  updateErrBadge(); saveState();
+}
+
+function getCorrectAnswer(q){
+  if(q.type==='qcm_ver') return q.verb.fr;
+  if(q.type==='ident') return q.correctLabels.join(' / ');
+  if(q.type==='paires') return q.correct;
+  return q.correct || q.form;
+}
+
+function showFeedback(ok, q){
+  const zone = document.getElementById('fbZone');
+  zone.classList.remove('hidden');
+  zone.className = `feedback ${ok?'correct-fb':'wrong-fb'}`;
+  const ca = getCorrectAnswer(q);
+  try {
+    zone.innerHTML = `<div class="fb-title ${ok?'ok':'ko'}">${ok?'✓ CORRECT':'✗ INCORRECT'}</div>
+      ${!ok?`<div class="fb-body">Bonne réponse : <strong>${ca}</strong></div>`:''}
+      <div class="fb-note">${q.verb.note||''}</div>
+      ${buildConjTable(q)}`;
+  } catch(err){
+    zone.innerHTML = `<div class="fb-title ${ok?'ok':'ko'}">${ok?'✓ CORRECT':'✗ INCORRECT'}</div>`;
+  }
+  document.getElementById('nextBtn').classList.remove('hidden');
+  document.getElementById('homeBtn').classList.remove('hidden');
+}
+
+function buildConjTable(q){
+  const v = q.verb;
+  const presRows = v.pres.map((f,i)=>`<tr class="${q.temps==='pres'&&q.persIdx===i?'hl':''}"><td>${PERSONS[i]}</td><td>${f}</td></tr>`).join('');
+  const pastRows = v.past.map((f,i)=>`<tr class="${q.temps==='past'&&q.persIdx===i?'hl':''}"><td>${['masc.','fém.','neut.','pl.'][i]}</td><td>${f}</td></tr>`).join('');
+  const futRows = v.fut.map((f,i)=>`<tr class="${q.temps==='fut'&&q.persIdx===i?'hl':''}"><td>${PERSONS[i]}</td><td>${f}</td></tr>`).join('');
+  const impRows = v.imp.map((f,i)=>`<tr class="${q.temps==='imp'&&q.persIdx===i?'hl':''}"><td>${i===0?'sg':'pl'}</td><td>${f}</td></tr>`).join('');
+  return `<table class="conj-table">
+    <thead><tr><th colspan="2">PRÉSENT</th></tr></thead><tbody>${presRows}</tbody>
+    <thead><tr><th colspan="2">PASSÉ</th></tr></thead><tbody>${pastRows}</tbody>
+    <thead><tr><th colspan="2">FUTUR</th></tr></thead><tbody>${futRows}</tbody>
+    <thead><tr><th colspan="2">IMPÉRATIF</th></tr></thead><tbody>${impRows}</tbody>
+  </table>`;
+}
+
+function renderStreak(){
+  const bar = document.getElementById('streakBar');
+  bar.innerHTML = streakHistory.slice(-10).map(ok=>`<div class="s-dot ${ok?'ok':'ko'}"></div>`).join('');
+}
+function updateExScore(){
+  document.getElementById('exR').textContent = session.right;
+  document.getElementById('exW').textContent = session.wrong;
+}
+
+// ══════════════════════════════════════════════════════
+// NEXT / RESULT
+// ══════════════════════════════════════════════════════
+function nextQ(){
+  answered = false; selectedCB = [];
+  session.cur++;
+  if(session.cur >= session.qs.length){ showResult(); return; }
+  renderQ();
+}
+
+function showResult(){
+  show('resultScreen');
+  const total = session.right + session.wrong;
+  const pct = total > 0 ? Math.round(session.right/total*100) : 0;
+  document.getElementById('resPct').textContent = pct+'%';
+  document.getElementById('resR').textContent = session.right;
+  document.getElementById('resW').textContent = session.wrong;
+  document.getElementById('resMsg').textContent = pct>=90?'🏆 Excellent !':pct>=70?'👍 Bien !':pct>=50?'📚 Continue !':'💪 Encore des efforts !';
+  // Stats par temps
+  const details = Object.entries(session.statsByTemps).filter(([t,s])=>s.r+s.w>0).map(([t,s])=>{
+    const p = Math.round(s.r/(s.r+s.w)*100);
+    const color = p>=80?'var(--green)':p>=50?'var(--gold)':'var(--red)';
+    return `<div class="stats-row"><div class="stats-lbl">${TEMPS_LABELS[t]}</div>
+      <div class="stats-bar-wrap"><div class="stats-bar-fill" style="width:${p}%;background:${color}"></div></div>
+      <div class="stats-pct">${p}%</div></div>`;
+  }).join('');
+  document.getElementById('resDetails').innerHTML = details;
+  document.getElementById('replayErrBtn').style.display = errorList.length>0?'block':'none';
+  // Update global score display
+  const gr = Object.values(wordStats).reduce((a,v)=>a+(v.r||0),0);
+  const gw = Object.values(wordStats).reduce((a,v)=>a+(v.w||0),0);
+  document.getElementById('scoreRight').textContent = gr;
+  document.getElementById('scoreWrong').textContent = gw;
+}
+
+// ══════════════════════════════════════════════════════
+// CHRONO
+// ══════════════════════════════════════════════════════
+function startChrono(totalSec){
+  stopChrono();
+  chronoLeft = totalSec;
+  document.getElementById('chronoWrap').classList.remove('hidden');
+  updateChronoDisplay(totalSec, totalSec);
+  chronoTimer = setInterval(()=>{
+    chronoLeft--;
+    updateChronoDisplay(chronoLeft, totalSec);
+    if(chronoLeft <= 0){ stopChrono(); timeOut(); }
+  }, 1000);
+}
+function stopChrono(){ if(chronoTimer){ clearInterval(chronoTimer); chronoTimer=null; chronoLeft=0; } }
+function updateChronoDisplay(left, total){
+  const pct = left/total*100;
+  const color = pct>50?'var(--green)':pct>25?'var(--gold)':'var(--red)';
+  document.getElementById('chronoBar').style.width = pct+'%';
+  document.getElementById('chronoBar').style.background = color;
+  document.getElementById('chronoNum').textContent = left;
+  document.getElementById('chronoNum').style.color = color;
+}
+
+// ══════════════════════════════════════════════════════
+// TABS: ERREURS & STATS
+// ══════════════════════════════════════════════════════
+function updateErrBadge(){
+  const b = document.getElementById('errBadge');
+  if(errorList.length > 0){ b.style.display='inline-flex'; b.textContent=errorList.length; }
+  else b.style.display='none';
+}
+
+function renderErrTab(){
+  const div = document.getElementById('errContent');
+  if(errorList.length === 0){ div.innerHTML=`<div class="empty-state">🎉 Aucune erreur !<br>Continue à t'entraîner.</div>`; return; }
+  const sorted = [...errorList].sort((a,b)=>b.count-a.count);
+  div.innerHTML = `<div style="font-family:var(--font-mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;margin-bottom:12px">${errorList.length} VERBE(S) À RETRAVAILLER</div>
+    ${sorted.map(e=>`<div class="error-item">
+      <div><div class="error-verb">${e.verb?e.verb.ru:'?'}</div>
+      <div class="error-meta">${e.verb?e.verb.fr:'?'}</div></div>
+      <div class="error-count">✗ ${e.count}</div>
+    </div>`).join('')}
+    <button class="btn-primary" onclick="startSession(true)">🔁 RÉVISER CES ERREURS →</button>
+    <button class="btn-danger" onclick="clearErrors()">Effacer la liste</button>`;
+}
+
+function clearErrors(){
+  if(confirm('Effacer la liste des erreurs ?')){ errorList=[]; updateErrBadge(); saveState(); renderErrTab(); }
+}
+
+function renderStatTab(){
+  const div = document.getElementById('statContent');
+  const total = Object.values(wordStats).reduce((a,v)=>a+(v.r||0)+(v.w||0),0);
+  if(total === 0){ div.innerHTML=`<div class="empty-state">Lance une session<br>pour voir tes stats.</div>`; return; }
+  const gr = Object.values(wordStats).reduce((a,v)=>a+(v.r||0),0);
+  const gw = total - gr;
+  const gpct = Math.round(gr/total*100);
+  // Top verbes difficiles
+  const hard = Object.entries(wordStats)
+    .filter(([k,v])=>(v.r+v.w)>=3)
+    .map(([k,v])=>({ key:k, pct:Math.round(v.r/(v.r+v.w)*100), total:v.r+v.w }))
+    .sort((a,b)=>a.pct-b.pct).slice(0,5);
+  div.innerHTML = `
+    <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:var(--text-dim);margin-bottom:12px">GLOBAL — ${total} QUESTIONS</div>
+    <div class="stats-row"><div class="stats-lbl">Score global</div>
+      <div class="stats-bar-wrap"><div class="stats-bar-fill" style="width:${gpct}%;background:${gpct>=80?'var(--green)':gpct>=50?'var(--gold)':'var(--red)'}"></div></div>
+      <div class="stats-pct">${gpct}%</div></div>
+    <div style="font-family:var(--font-mono);font-size:9px;color:var(--text-dim);margin-top:4px;margin-bottom:4px">${gr} ✓ · ${gw} ✗</div>
+    ${hard.length>0?`<div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:var(--text-dim);margin-top:14px;margin-bottom:8px">VERBES LES PLUS DIFFICILES</div>
+    ${hard.map(h=>`<div class="stats-row"><div class="stats-lbl">${h.key.split('|')[0]}</div>
+      <div class="stats-bar-wrap"><div class="stats-bar-fill" style="width:${h.pct}%;background:var(--red)"></div></div>
+      <div class="stats-pct">${h.pct}%</div></div>`).join('')}`:''}`;
+}
+
+// ══════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', ()=>{
+  loadState();
+  renderErrTab();
+  renderStatTab();
+});
+
+// PWA Service Worker
+if('serviceWorker' in navigator){
+  const swCode = `
+const CACHE='verbes-v1';
+self.addEventListener('install',e=>{self.skipWaiting();});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
+self.addEventListener('fetch',e=>{e.respondWith(fetch(e.request).then(res=>{if(res&&res.status===200){const clone=res.clone();caches.open(CACHE).then(cache=>cache.put(e.request,clone));}return res;}).catch(()=>caches.match(e.request)));});
+`;
+  const blob = new Blob([swCode], {type:'application/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
+}
+</script>
+</body>
+</html>
